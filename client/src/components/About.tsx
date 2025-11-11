@@ -38,8 +38,8 @@ export default function About() {
     <section id="about" className="py-32 px-6" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-display font-bold text-4xl md:text-5xl mb-4 border-b-4 border-primary inline-block pb-2" data-testid="heading-about">
-            About
+          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-foreground" data-testid="heading-about">
+            <span className="text-primary">&lt;</span>About<span className="text-primary">/&gt;</span>
           </h2>
         </div>
 

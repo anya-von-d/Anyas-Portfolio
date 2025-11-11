@@ -62,8 +62,8 @@ export default function Experience() {
     <section id="experience" className="py-32 px-6" data-testid="section-experience">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-display font-bold text-4xl md:text-5xl mb-4 border-b-4 border-primary inline-block pb-2" data-testid="heading-experience">
-            Experience
+          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-white" data-testid="heading-experience">
+            <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
           </h2>
         </div>
 
@@ -71,36 +71,27 @@ export default function Experience() {
           {experiences.map((exp, index) => (
             <Card
               key={index}
-              className={`overflow-hidden transition-all duration-300 border-l-4 ${
-                expandedIndex === index ? 'border-l-primary' : 'border-l-primary/30'
-              } animate-fade-in`}
+              className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
               data-testid={`card-experience-${index}`}
             >
               <button
                 onClick={() => toggleExpand(index)}
-                className="w-full p-6 text-left hover-elevate active-elevate-2 transition-all"
+                className="w-full p-6 text-left transition-all"
                 data-testid={`button-expand-${index}`}
               >
                 <div className="flex items-start justify-between gap-4">
-                  <div className="flex items-start gap-4 flex-1">
-                    <div className="p-3 rounded-lg bg-primary/10 mt-1">
-                      <Briefcase className="w-5 h-5 text-primary" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-display font-bold text-xl mb-1 text-white" data-testid={`text-title-${index}`}>
-                        {exp.title}
-                      </h3>
-                      <p className="text-primary font-medium mb-2" data-testid={`text-org-${index}`}>
-                        {exp.organization}
-                      </p>
-                      <div className="flex items-center gap-4 text-sm text-white/60 font-mono flex-wrap">
-                        <span>{exp.location}</span>
-                        <span className="flex items-center gap-1">
-                          <Calendar className="w-3 h-3" />
-                          {exp.period}
-                        </span>
-                      </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-mono text-lg md:text-xl mb-3 text-white" data-testid={`text-title-${index}`}>
+                      <span className="text-primary">&lt;</span>
+                      {exp.title.toUpperCase()}
+                      <span className="text-primary">/&gt;</span>
+                    </h3>
+                    <p className="text-white/70 mb-2" data-testid={`text-org-${index}`}>
+                      {exp.organization}
+                    </p>
+                    <div className="flex items-center gap-2 text-sm text-primary font-mono">
+                      <span>{exp.period}</span>
                     </div>
                   </div>
                   <div className="shrink-0">
@@ -115,14 +106,14 @@ export default function Experience() {
 
               {expandedIndex === index && (
                 <div className="px-6 pb-6 animate-accordion-down" data-testid={`content-experience-${index}`}>
-                  <div className="pl-16 pt-4 border-t border-white/10">
-                    <p className="text-white/80 leading-relaxed mb-4">{exp.description}</p>
+                  <div className="pt-4 border-t border-white/10">
+                    <p className="text-white/70 leading-relaxed mb-4">{exp.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {exp.tags.map((tag) => (
                         <Badge
                           key={tag}
                           variant="secondary"
-                          className="font-mono text-xs"
+                          className="font-mono text-xs bg-white/10 text-white border-white/20"
                           data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
                         >
                           {tag}
