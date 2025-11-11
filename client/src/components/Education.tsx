@@ -19,10 +19,10 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-32 px-6" data-testid="section-education">
+    <section id="education" className="py-32 px-6 bg-[hsl(120,20%,15%)]" data-testid="section-education">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-foreground" data-testid="heading-education">
+          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-white" data-testid="heading-education">
             <span className="text-primary">&lt;</span>Education<span className="text-primary">/&gt;</span>
           </h2>
         </div>
@@ -31,7 +31,7 @@ export default function Education() {
           {education.map((edu, index) => (
             <Card
               key={index}
-              className="p-6 md:p-8 hover-elevate active-elevate-2 transition-all animate-fade-in"
+              className="p-6 md:p-8 hover-elevate active-elevate-2 transition-all animate-fade-in bg-white/5 border-white/10"
               style={{ animationDelay: `${index * 100}ms` }}
               data-testid={`card-education-${index}`}
             >
@@ -44,10 +44,10 @@ export default function Education() {
                   </div>
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-lg md:text-xl text-foreground mb-2" data-testid={`text-degree-${index}`}>
+                  <h3 className="font-semibold text-lg md:text-xl text-white mb-2" data-testid={`text-degree-${index}`}>
                     {edu.degree}
                   </h3>
-                  <p className="text-muted-foreground mb-1" data-testid={`text-school-${index}`}>
+                  <p className="text-white/70 mb-1" data-testid={`text-school-${index}`}>
                     {edu.school} | {edu.date}
                   </p>
                   {edu.current && (

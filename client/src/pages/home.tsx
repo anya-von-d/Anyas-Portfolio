@@ -15,7 +15,10 @@ export default function Home() {
         <div className="relative bg-gradient-to-b from-[hsl(74,48%,95%)] via-[hsl(74,40%,92%)] to-[hsl(0,0%,100%)]">
           <Hero />
         </div>
-        <div className="relative bg-gradient-to-b from-white to-[hsl(120,20%,15%)]">
+        <div className="relative">
+          <div className="bg-gradient-to-b from-white to-white pb-16">
+            <div className="h-32" />
+          </div>
           <About />
           <Education />
         </div>

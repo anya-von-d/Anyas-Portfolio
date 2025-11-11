@@ -35,62 +35,66 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="py-32 px-6" data-testid="section-about">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-foreground" data-testid="heading-about">
+    <section id="about" className="relative pt-0 pb-32 px-6" data-testid="section-about">
+      <div className="absolute left-0 right-0 top-0 h-32 bg-gradient-to-b from-white to-transparent pointer-events-none" />
+      
+      <div className="relative max-w-6xl mx-auto">
+        <div className="inline-block bg-[hsl(120,20%,15%)] rounded-t-3xl px-8 py-4 -mb-px">
+          <h2 className="font-mono text-2xl md:text-3xl text-white whitespace-nowrap" data-testid="heading-about">
             <span className="text-primary">&lt;</span>About<span className="text-primary">/&gt;</span>
           </h2>
         </div>
+        
+        <div className="bg-[hsl(120,20%,15%)] rounded-tr-3xl rounded-b-3xl p-8 md:p-12">
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="space-y-6 animate-slide-in-left">
+              <p className="text-lg leading-relaxed text-white/90">
+                I'm a graduate student at Stanford University pursuing a Master's in Computer Science with a
+                focus on Artificial Intelligence. My work bridges the gap between cutting-edge AI methodologies
+                and real-world clinical applications.
+              </p>
+              <p className="text-lg leading-relaxed text-white/90">
+                With experience at Google and multiple research positions at Stanford, I specialize in developing
+                AI-driven solutions for complex problems in medical imaging, general game playing, and precision
+                healthcare.
+              </p>
+              <p className="text-lg leading-relaxed text-white/90">
+                I'm passionate about teaching and mentoring, having served as a Teaching Assistant for multiple
+                courses and as a Math Department tutor, helping students master complex concepts in computer
+                science and mathematics.
+              </p>
+            </div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
-          <div className="space-y-6 animate-slide-in-left">
-            <p className="text-lg leading-relaxed text-foreground/90">
-              I'm a graduate student at Stanford University pursuing a Master's in Computer Science with a
-              focus on Artificial Intelligence. My work bridges the gap between cutting-edge AI methodologies
-              and real-world clinical applications.
-            </p>
-            <p className="text-lg leading-relaxed text-foreground/90">
-              With experience at Google and multiple research positions at Stanford, I specialize in developing
-              AI-driven solutions for complex problems in medical imaging, general game playing, and precision
-              healthcare.
-            </p>
-            <p className="text-lg leading-relaxed text-foreground/90">
-              I'm passionate about teaching and mentoring, having served as a Teaching Assistant for multiple
-              courses and as a Math Department tutor, helping students master complex concepts in computer
-              science and mathematics.
-            </p>
-          </div>
-
-          <div className="space-y-4 animate-slide-in-right">
-            <div className="flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <Badge
-                  key={skill}
-                  variant="outline"
-                  className="font-mono text-sm px-3 py-1 border-primary/30 hover:bg-primary/10 hover:border-primary transition-colors cursor-default"
-                  data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
-                >
-                  {skill}
-                </Badge>
-              ))}
+            <div className="space-y-4 animate-slide-in-right">
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill) => (
+                  <Badge
+                    key={skill}
+                    variant="outline"
+                    className="font-mono text-sm px-3 py-1 border-primary/40 text-white hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
+                    data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    {skill}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {focuses.map((focus, index) => (
-            <Card
-              key={focus.title}
-              className="p-6 hover-elevate active-elevate-2 transition-all cursor-default animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-              data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
-            >
-              <focus.icon className="w-10 h-10 text-primary mb-4" />
-              <h3 className="font-display font-bold text-xl mb-2">{focus.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{focus.description}</p>
-            </Card>
-          ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            {focuses.map((focus, index) => (
+              <Card
+                key={focus.title}
+                className="p-6 hover-elevate active-elevate-2 transition-all cursor-default animate-fade-in bg-white/5 border-white/10"
+                style={{ animationDelay: `${index * 100}ms` }}
+                data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
+              >
+                <focus.icon className="w-10 h-10 text-primary mb-4" />
+                <h3 className="font-display font-bold text-xl mb-2 text-white">{focus.title}</h3>
+                <p className="text-white/70 leading-relaxed">{focus.description}</p>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
