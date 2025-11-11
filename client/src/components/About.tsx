@@ -47,19 +47,10 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-6 animate-slide-in-left">
               <p className="text-lg leading-relaxed text-foreground/90">
-                I'm a graduate student at Stanford University pursuing a Master's in Computer Science with a
-                focus on Artificial Intelligence. My work bridges the gap between cutting-edge AI methodologies
-                and real-world clinical applications.
+                Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
               </p>
               <p className="text-lg leading-relaxed text-foreground/90">
-                With experience at Google and multiple research positions at Stanford, I specialize in developing
-                AI-driven solutions for complex problems in medical imaging, general game playing, and precision
-                healthcare.
-              </p>
-              <p className="text-lg leading-relaxed text-foreground/90">
-                I'm passionate about teaching and mentoring, having served as a Teaching Assistant for multiple
-                courses and as a Math Department tutor, helping students master complex concepts in computer
-                science and mathematics.
+                Passionate about teaching and mentoring as a TA and Math Department tutor, helping students master complex concepts in computer science and mathematics.
               </p>
             </div>
 
