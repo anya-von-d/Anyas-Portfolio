@@ -59,12 +59,23 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="py-32 px-6" data-testid="section-experience">
-      <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
-          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-white" data-testid="heading-experience">
-            <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
-          </h2>
+    <section id="experience" className="relative py-16 px-6" data-testid="section-experience">
+      <div className="relative max-w-6xl mx-auto">
+        <div className="relative flex items-end mb-8">
+          <div className="relative" style={{ width: '350px', height: '80px' }}>
+            <svg className="w-full h-full absolute bottom-0" viewBox="0 0 350 80" preserveAspectRatio="none" style={{ display: 'block' }}>
+              <path
+                d="M 0,60 Q 20,60 35,40 Q 50,20 75,20 L 275,20 Q 300,20 315,40 Q 330,60 350,60 L 350,80 L 0,80 Z"
+                fill="hsl(120, 20%, 15%)"
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center pt-6">
+              <h2 className="font-mono text-xl md:text-2xl text-white whitespace-nowrap" data-testid="heading-experience">
+                <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
+              </h2>
+            </div>
+          </div>
+          <div className="flex-1 bg-[hsl(120,20%,15%)] h-5"></div>
         </div>
 
         <div className="space-y-6">
