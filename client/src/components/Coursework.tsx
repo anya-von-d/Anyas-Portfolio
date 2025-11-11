@@ -68,7 +68,7 @@ export default function Coursework() {
                   onMouseLeave={() => setHoveredIndex(null)}
                   data-testid={`card-course-${index}`}
                 >
-                  <p className="font-mono text-sm leading-relaxed text-[#1EDF84]">{course}</p>
+                  <p className="font-mono text-sm leading-relaxed text-[#35B276]">{course}</p>
                 </Card>
               ))}
             </div>
