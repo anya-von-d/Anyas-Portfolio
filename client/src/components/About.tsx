@@ -39,13 +39,17 @@ export default function About() {
       <div className="absolute left-0 right-0 top-0 h-32 bg-gradient-to-b from-white to-transparent pointer-events-none" />
       
       <div className="relative max-w-6xl mx-auto">
-        <div className="inline-block bg-[hsl(120,20%,15%)] rounded-t-3xl px-8 py-4 -mb-px">
+        <div className="inline-block bg-[hsl(120,20%,15%)] px-10 py-5 -mb-px relative" 
+             style={{
+               borderRadius: '40px 40px 0 0',
+               clipPath: 'polygon(0 40%, 8% 0, 92% 0, 100% 40%, 100% 100%, 0 100%)'
+             }}>
           <h2 className="font-mono text-2xl md:text-3xl text-white whitespace-nowrap" data-testid="heading-about">
             <span className="text-primary">&lt;</span>About<span className="text-primary">/&gt;</span>
           </h2>
         </div>
         
-        <div className="bg-[hsl(120,20%,15%)] rounded-tr-3xl rounded-b-3xl p-8 md:p-12">
+        <div className="bg-[hsl(120,20%,15%)] rounded-tr-[40px] rounded-b-3xl p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-6 animate-slide-in-left">
               <p className="text-lg leading-relaxed text-white/90">
