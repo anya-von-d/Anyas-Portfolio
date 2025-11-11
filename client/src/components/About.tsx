@@ -56,7 +56,7 @@ export default function About() {
                   <Badge
                     key={skill}
                     variant="outline"
-                    className="font-mono text-sm px-3 py-1 border-white text-[#1A1A1A] hover:bg-white hover:text-primary transition-colors cursor-default"
+                    className="font-mono text-sm px-3 py-1 !border-white text-[#1A1A1A] hover:bg-white hover:text-primary transition-colors cursor-default"
                     data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {skill}
