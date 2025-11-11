@@ -103,21 +103,6 @@ export default function Hero() {
                 Resume
               </Button>
             </div>
-
-            <div className="flex gap-12 pt-8">
-              <div>
-                <div className="font-display font-bold text-3xl text-primary">5+</div>
-                <div className="font-mono text-sm text-muted-foreground mt-1">Positions</div>
-              </div>
-              <div>
-                <div className="font-display font-bold text-3xl text-primary">10+</div>
-                <div className="font-mono text-sm text-muted-foreground mt-1">Courses</div>
-              </div>
-              <div>
-                <div className="font-display font-bold text-3xl text-primary">2</div>
-                <div className="font-mono text-sm text-muted-foreground mt-1">Degrees</div>
-              </div>
-            </div>
           </div>
 
           <div className="flex justify-center md:justify-end">

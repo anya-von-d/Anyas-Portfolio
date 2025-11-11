@@ -16,9 +16,6 @@ export default function Home() {
           <Hero />
         </div>
         <div className="relative">
-          <div className="bg-gradient-to-b from-white to-white pb-16">
-            <div className="h-32" />
-          </div>
           <About />
           <Education />
         </div>

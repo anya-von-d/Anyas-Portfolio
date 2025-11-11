@@ -35,8 +35,7 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="relative pt-0 pb-32 px-6" data-testid="section-about">
-      <div className="absolute left-0 right-0 top-0 h-32 bg-gradient-to-b from-white to-transparent pointer-events-none" />
+    <section id="about" className="relative pt-16 pb-32 px-6" data-testid="section-about">
       
       <div className="relative max-w-6xl mx-auto">
         <div className="inline-block bg-[hsl(120,20%,15%)] px-10 py-5 -mb-px relative" 
