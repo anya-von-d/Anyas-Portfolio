@@ -34,18 +34,18 @@ export default function About() {
     <section id="about" className="relative pt-16 pb-32 px-6 bg-[#35B276]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-white" data-testid="heading-about">
-            <span className="text-white">&lt;</span>About<span className="text-white">/&gt;</span>
+          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-[#1A1A1A]" data-testid="heading-about">
+            <span className="text-[#006B3D]">&lt;</span>About<span className="text-[#006B3D]">/&gt;</span>
           </h2>
         </div>
         
         <div>
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-6 animate-slide-in-left">
-              <p className="text-lg leading-relaxed text-white/95">
+              <p className="text-lg leading-relaxed text-[#1A1A1A]">
                 Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
               </p>
-              <p className="text-lg leading-relaxed text-white/95">
+              <p className="text-lg leading-relaxed text-[#1A1A1A]">
                 Passionate about teaching and mentoring as a TA and Math Department tutor, helping students master complex concepts in computer science and mathematics.
               </p>
             </div>
@@ -56,7 +56,7 @@ export default function About() {
                   <Badge
                     key={skill}
                     variant="outline"
-                    className="font-mono text-sm px-3 py-1 border-white/50 text-white hover:bg-white hover:text-primary transition-colors cursor-default"
+                    className="font-mono text-sm px-3 py-1 border-white text-[#1A1A1A] hover:bg-white hover:text-primary transition-colors cursor-default"
                     data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
                   >
                     {skill}
@@ -74,8 +74,8 @@ export default function About() {
                 style={{ animationDelay: `${index * 100}ms` }}
                 data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <h3 className="font-display font-bold text-xl mb-2 text-white">{focus.title}</h3>
-                <p className="text-white/80 leading-relaxed">{focus.description}</p>
+                <h3 className="font-display font-bold text-xl mb-2 text-[#1A1A1A]">{focus.title}</h3>
+                <p className="text-[#1A1A1A]/80 leading-relaxed">{focus.description}</p>
               </Card>
             ))}
           </div>
