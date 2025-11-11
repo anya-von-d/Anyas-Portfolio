@@ -54,7 +54,7 @@ export default function Coursework() {
           <div className="grid md:grid-cols-2 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <h3 className="font-display font-bold text-2xl">Relevant Courses</h3>
+              <h3 className="font-display font-bold text-2xl text-white">Relevant Courses</h3>
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
               {courses.map((course, index) => (
@@ -76,7 +76,7 @@ export default function Coursework() {
 
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <h3 className="font-display font-bold text-2xl">Technical Skills</h3>
+              <h3 className="font-display font-bold text-2xl text-white">Technical Skills</h3>
             </div>
             <div className="flex flex-wrap gap-3">
               {technicalSkills.map((skill, index) => (
