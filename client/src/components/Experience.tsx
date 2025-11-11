@@ -88,13 +88,13 @@ export default function Experience() {
                       <Briefcase className="w-5 h-5 text-primary" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <h3 className="font-display font-bold text-xl mb-1" data-testid={`text-title-${index}`}>
+                      <h3 className="font-display font-bold text-xl mb-1 text-white" data-testid={`text-title-${index}`}>
                         {exp.title}
                       </h3>
                       <p className="text-primary font-medium mb-2" data-testid={`text-org-${index}`}>
                         {exp.organization}
                       </p>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground font-mono flex-wrap">
+                      <div className="flex items-center gap-4 text-sm text-white/60 font-mono flex-wrap">
                         <span>{exp.location}</span>
                         <span className="flex items-center gap-1">
                           <Calendar className="w-3 h-3" />
@@ -107,7 +107,7 @@ export default function Experience() {
                     {expandedIndex === index ? (
                       <ChevronUp className="w-5 h-5 text-primary" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-muted-foreground" />
+                      <ChevronDown className="w-5 h-5 text-white/60" />
                     )}
                   </div>
                 </div>
@@ -115,8 +115,8 @@ export default function Experience() {
 
               {expandedIndex === index && (
                 <div className="px-6 pb-6 animate-accordion-down" data-testid={`content-experience-${index}`}>
-                  <div className="pl-16 pt-4 border-t border-border/50">
-                    <p className="text-foreground/90 leading-relaxed mb-4">{exp.description}</p>
+                  <div className="pl-16 pt-4 border-t border-white/10">
+                    <p className="text-white/80 leading-relaxed mb-4">{exp.description}</p>
                     <div className="flex flex-wrap gap-2">
                       {exp.tags.map((tag) => (
                         <Badge

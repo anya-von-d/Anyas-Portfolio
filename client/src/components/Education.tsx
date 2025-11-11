@@ -22,7 +22,7 @@ const education = [
 
 export default function Education() {
   return (
-    <section id="education" className="py-32 px-6 bg-card/30" data-testid="section-education">
+    <section id="education" className="py-32 px-6" data-testid="section-education">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl mb-4 border-b-4 border-primary inline-block pb-2" data-testid="heading-education">

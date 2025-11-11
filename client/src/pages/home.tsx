@@ -12,27 +12,33 @@ export default function Home() {
       <ParticleBackground />
       <Navigation />
       <main>
-        <Hero />
-        <About />
-        <Education />
-        <Experience />
-        <Coursework />
+        <div className="relative bg-gradient-to-b from-[hsl(74,48%,95%)] via-[hsl(74,40%,92%)] to-[hsl(0,0%,100%)]">
+          <Hero />
+        </div>
+        <div className="relative bg-gradient-to-b from-white to-[hsl(120,20%,15%)]">
+          <About />
+          <Education />
+        </div>
+        <div className="relative bg-[hsl(120,20%,15%)] text-white">
+          <Experience />
+          <Coursework />
+        </div>
       </main>
-      <footer className="py-12 px-6 border-t border-border" data-testid="footer-main">
+      <footer className="py-12 px-6 border-t border-white/10 bg-[hsl(120,20%,15%)] text-white" data-testid="footer-main">
         <div className="max-w-6xl mx-auto text-center">
-          <p className="text-muted-foreground font-mono text-sm">
+          <p className="text-white/60 font-mono text-sm">
             © 2025 Anya Von Diessl. Built with React + TypeScript
           </p>
           <div className="mt-4 flex justify-center gap-6 text-sm">
             <a
               href="mailto:anya2025@stanford.edu"
-              className="text-muted-foreground hover:text-primary transition-colors font-mono"
+              className="text-white/60 hover:text-primary transition-colors font-mono"
               data-testid="link-email"
             >
               anya2025@stanford.edu
             </a>
-            <span className="text-border">•</span>
-            <span className="text-muted-foreground font-mono">Palo Alto, CA</span>
+            <span className="text-white/20">•</span>
+            <span className="text-white/60 font-mono">Palo Alto, CA</span>
           </div>
         </div>
       </footer>

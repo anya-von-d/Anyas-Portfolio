@@ -32,7 +32,7 @@ export default function Coursework() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="coursework" className="py-32 px-6 bg-card/30" data-testid="section-coursework">
+    <section id="coursework" className="py-32 px-6" data-testid="section-coursework">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="font-display font-bold text-4xl md:text-5xl mb-4 border-b-4 border-primary inline-block pb-2" data-testid="heading-coursework">
@@ -76,7 +76,7 @@ export default function Coursework() {
                 <Badge
                   key={skill}
                   variant="outline"
-                  className="font-mono px-4 py-2 text-sm border-primary/40 hover:bg-primary hover:text-primary-foreground transition-all cursor-default animate-fade-in"
+                  className="font-mono px-4 py-2 text-sm border-primary/40 text-white hover:bg-primary hover:text-primary-foreground transition-all cursor-default animate-fade-in"
                   style={{ animationDelay: `${index * 50}ms` }}
                   data-testid={`badge-tech-${skill.toLowerCase().replace(/\s+/g, '-')}`}
                 >
@@ -85,8 +85,8 @@ export default function Coursework() {
               ))}
             </div>
 
-            <Card className="mt-8 p-6 border-primary/30">
-              <p className="text-muted-foreground leading-relaxed">
+            <Card className="mt-8 p-6 border-primary/30 bg-white/5">
+              <p className="text-white/70 leading-relaxed">
                 <span className="font-display font-semibold text-primary block mb-2">
                   Specialized Expertise
                 </span>

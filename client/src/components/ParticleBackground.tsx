@@ -40,7 +40,7 @@ export default function ParticleBackground() {
     let animationFrameId: number;
 
     const animate = () => {
-      ctx.fillStyle = 'rgba(10, 14, 20, 0.1)';
+      ctx.fillStyle = 'rgba(230, 245, 220, 0.15)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle, i) => {
@@ -52,7 +52,7 @@ export default function ParticleBackground() {
 
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(102, 187, 106, 0.6)';
+        ctx.fillStyle = 'rgba(102, 187, 106, 0.4)';
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -64,7 +64,7 @@ export default function ParticleBackground() {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `rgba(124, 179, 66, ${0.2 * (1 - distance / 150)})`;
+            ctx.strokeStyle = `rgba(124, 179, 66, ${0.15 * (1 - distance / 150)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -91,8 +91,8 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 -z-10 opacity-40"
-      style={{ background: 'hsl(217, 24%, 7%)' }}
+      className="fixed inset-0 -z-10 opacity-60"
+      style={{ background: 'linear-gradient(180deg, hsl(74, 48%, 95%) 0%, hsl(74, 48%, 95%) 100%)' }}
     />
   );
 }
