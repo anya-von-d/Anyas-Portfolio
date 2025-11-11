@@ -39,23 +39,23 @@ export default function About() {
       
       <div className="relative max-w-6xl mx-auto">
         <div className="relative flex items-end">
-          <div className="relative" style={{ width: '300px' }}>
-            <svg className="w-full" viewBox="0 0 300 80" preserveAspectRatio="none" style={{ display: 'block' }}>
+          <div className="relative" style={{ width: '300px', height: '80px' }}>
+            <svg className="w-full h-full absolute bottom-0" viewBox="0 0 300 80" preserveAspectRatio="none" style={{ display: 'block' }}>
               <path
                 d="M 0,60 Q 20,60 35,40 Q 50,20 75,20 L 225,20 Q 250,20 265,40 Q 280,60 300,60 L 300,80 L 0,80 Z"
                 fill="hsl(120, 20%, 15%)"
               />
             </svg>
-            <div className="absolute inset-0 flex items-center px-8">
+            <div className="absolute inset-0 flex items-center justify-center pt-6">
               <h2 className="font-mono text-xl md:text-2xl text-white whitespace-nowrap" data-testid="heading-about">
                 <span className="text-primary">&lt;</span>About<span className="text-primary">/&gt;</span>
               </h2>
             </div>
           </div>
-          <div className="flex-1 bg-[hsl(120,20%,15%)] h-[1px]"></div>
+          <div className="flex-1 bg-[hsl(120,20%,15%)] h-5"></div>
         </div>
         
-        <div className="bg-[hsl(120,20%,15%)] -mt-px p-8 md:p-12">
+        <div className="bg-[hsl(120,20%,15%)] p-8 md:p-12">
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <div className="space-y-6 animate-slide-in-left">
               <p className="text-lg leading-relaxed text-white/90">
