@@ -39,9 +39,9 @@ export default function About() {
       
       <div className="relative max-w-6xl mx-auto">
         <div className="relative">
-          <svg className="w-full" viewBox="0 0 1000 120" preserveAspectRatio="none" style={{ display: 'block' }}>
+          <svg className="w-full" viewBox="0 0 400 100" preserveAspectRatio="none" style={{ display: 'block' }}>
             <path
-              d="M 0,100 C 80,100 80,40 150,40 C 220,40 220,20 300,20 C 380,20 380,40 450,40 C 520,40 520,20 600,20 C 680,20 680,40 750,40 C 820,40 820,100 900,100 L 1000,100 L 1000,120 L 0,120 Z"
+              d="M 0,80 Q 30,80 50,50 Q 70,20 100,20 L 300,20 Q 330,20 350,50 Q 370,80 400,80 L 400,100 L 0,100 Z"
               fill="hsl(120, 20%, 15%)"
             />
           </svg>
