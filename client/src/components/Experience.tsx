@@ -78,64 +78,66 @@ export default function Experience() {
           <div className="flex-1 bg-[hsl(120,20%,15%)] h-5"></div>
         </div>
 
-        <div className="space-y-6">
-          {experiences.map((exp, index) => (
-            <Card
-              key={index}
-              className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-              data-testid={`card-experience-${index}`}
-            >
-              <button
-                onClick={() => toggleExpand(index)}
-                className="w-full p-6 text-left transition-all"
-                data-testid={`button-expand-${index}`}
+        <div className="bg-[hsl(120,20%,15%)] p-8 md:p-12">
+          <div className="space-y-6">
+            {experiences.map((exp, index) => (
+              <Card
+                key={index}
+                className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in"
+                style={{ animationDelay: `${index * 100}ms` }}
+                data-testid={`card-experience-${index}`}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-mono text-lg md:text-xl mb-3 text-white" data-testid={`text-title-${index}`}>
-                      <span className="text-primary">&lt;</span>
-                      {exp.title.toUpperCase()}
-                      <span className="text-primary">/&gt;</span>
-                    </h3>
-                    <p className="text-white/70 mb-2" data-testid={`text-org-${index}`}>
-                      {exp.organization}
-                    </p>
-                    <div className="flex items-center gap-2 text-sm text-primary font-mono">
-                      <span>{exp.period}</span>
+                <button
+                  onClick={() => toggleExpand(index)}
+                  className="w-full p-6 text-left transition-all"
+                  data-testid={`button-expand-${index}`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-mono text-lg md:text-xl mb-3 text-white" data-testid={`text-title-${index}`}>
+                        <span className="text-primary">&lt;</span>
+                        {exp.title.toUpperCase()}
+                        <span className="text-primary">/&gt;</span>
+                      </h3>
+                      <p className="text-white/70 mb-2" data-testid={`text-org-${index}`}>
+                        {exp.organization}
+                      </p>
+                      <div className="flex items-center gap-2 text-sm text-primary font-mono">
+                        <span>{exp.period}</span>
+                      </div>
+                    </div>
+                    <div className="shrink-0">
+                      {expandedIndex === index ? (
+                        <ChevronUp className="w-5 h-5 text-primary" />
+                      ) : (
+                        <ChevronDown className="w-5 h-5 text-white/60" />
+                      )}
                     </div>
                   </div>
-                  <div className="shrink-0">
-                    {expandedIndex === index ? (
-                      <ChevronUp className="w-5 h-5 text-primary" />
-                    ) : (
-                      <ChevronDown className="w-5 h-5 text-white/60" />
-                    )}
-                  </div>
-                </div>
-              </button>
+                </button>
 
-              {expandedIndex === index && (
-                <div className="px-6 pb-6 animate-accordion-down" data-testid={`content-experience-${index}`}>
-                  <div className="pt-4 border-t border-white/10">
-                    <p className="text-white/70 leading-relaxed mb-4">{exp.description}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.tags.map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="font-mono text-xs bg-white/10 text-white border-white/20"
-                          data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
+                {expandedIndex === index && (
+                  <div className="px-6 pb-6 animate-accordion-down" data-testid={`content-experience-${index}`}>
+                    <div className="pt-4 border-t border-white/10">
+                      <p className="text-white/70 leading-relaxed mb-4">{exp.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.tags.map((tag) => (
+                          <Badge
+                            key={tag}
+                            variant="secondary"
+                            className="font-mono text-xs bg-white/10 text-white border-white/20"
+                            data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                          >
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              )}
-            </Card>
-          ))}
+                )}
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
