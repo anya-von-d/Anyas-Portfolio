@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { BookOpen } from 'lucide-react';
 
 const courses = [
   'Machine Learning',
@@ -55,7 +54,6 @@ export default function Coursework() {
           <div className="grid md:grid-cols-2 gap-12">
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <BookOpen className="w-6 h-6 text-primary" />
               <h3 className="font-display font-bold text-2xl">Relevant Courses</h3>
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -78,9 +76,6 @@ export default function Coursework() {
 
           <div>
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-6 h-6 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-primary animate-glow" />
-              </div>
               <h3 className="font-display font-bold text-2xl">Technical Skills</h3>
             </div>
             <div className="flex flex-wrap gap-3">

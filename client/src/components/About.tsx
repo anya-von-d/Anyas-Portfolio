@@ -1,6 +1,5 @@
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Code2, Brain, Database } from 'lucide-react';
 
 const skills = [
   'Machine Learning',
@@ -17,17 +16,14 @@ const skills = [
 
 const focuses = [
   {
-    icon: Brain,
     title: 'AI Research',
     description: 'Developing contrastive deep learning models and CNN architectures for medical applications',
   },
   {
-    icon: Code2,
     title: 'Software Engineering',
     description: 'Building high-performance user interfaces and scalable production-quality features',
   },
   {
-    icon: Database,
     title: 'Machine Learning',
     description: 'Applying advanced ML techniques to enhance sequence-to-function predictions',
   },
@@ -78,7 +74,6 @@ export default function About() {
                 style={{ animationDelay: `${index * 100}ms` }}
                 data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <focus.icon className="w-10 h-10 text-primary mb-4" />
                 <h3 className="font-display font-bold text-xl mb-2 text-foreground">{focus.title}</h3>
                 <p className="text-muted-foreground leading-relaxed">{focus.description}</p>
               </Card>
