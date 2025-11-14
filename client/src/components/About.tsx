@@ -45,9 +45,6 @@ export default function About() {
               <p className="text-lg leading-relaxed text-[#1A1A1A]">
                 Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
               </p>
-              <p className="text-lg leading-relaxed text-[#1A1A1A]">
-                Passionate about teaching and mentoring as a TA and Math Department tutor, helping students master complex concepts in computer science and mathematics.
-              </p>
             </div>
 
             <div className="space-y-4 animate-slide-in-right">
