@@ -31,7 +31,7 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="relative pt-16 pb-32 px-6 bg-[#35B276]" data-testid="section-about">
+    <section id="about" className="relative py-16 px-6 bg-[#35B276]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
