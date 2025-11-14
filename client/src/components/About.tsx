@@ -34,8 +34,8 @@ export default function About() {
     <section id="about" className="relative pt-16 pb-32 px-6 bg-[#35B276]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16">
-          <h2 className="font-mono text-3xl md:text-4xl mb-4 text-[#1A1A1A]" data-testid="heading-about">
-            <span className="text-[#006B3D]">&lt;</span>About<span className="text-[#006B3D]">/&gt;</span>
+          <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
+            <span className="text-[#006B3D]">&lt;</span><span className="text-white">About</span><span className="text-[#006B3D]">/&gt;</span>
           </h2>
         </div>
         
