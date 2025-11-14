@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import logoImage from '@assets/generated_images/AVD_logo_tech_style_b6782712.png';
 
 const navItems = [
   { label: 'About', href: '#about' },
@@ -53,10 +54,10 @@ export default function Navigation() {
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="font-display font-bold text-xl tracking-tight hover-elevate active-elevate-2 px-2 py-1 rounded-md"
+            className="hover-elevate active-elevate-2 rounded-md"
             data-testid="link-home"
           >
-            <span className="text-primary">A</span>VD
+            <img src={logoImage} alt="AVD Logo" className="h-10 w-auto" />
           </button>
 
           <div className="hidden md:flex items-center gap-1">
