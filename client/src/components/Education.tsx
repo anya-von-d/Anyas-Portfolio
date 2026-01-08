@@ -1,5 +1,6 @@
 import { Card } from '@/components/ui/card';
 import stanfordLogo from '@assets/vondy-3_1767893482214.png';
+import stanfordEngineeringLogo from '@assets/vondy-4_1767893539231.png';
 
 const education = [
   {
@@ -43,6 +44,12 @@ export default function Education() {
                       <img 
                         src={stanfordLogo} 
                         alt="Stanford University" 
+                        className="w-full h-full object-cover"
+                      />
+                    ) : edu.abbreviation === 'MS' ? (
+                      <img 
+                        src={stanfordEngineeringLogo} 
+                        alt="Stanford Engineering" 
                         className="w-full h-full object-cover"
                       />
                     ) : (
