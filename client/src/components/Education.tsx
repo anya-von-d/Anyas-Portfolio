@@ -5,14 +5,14 @@ const education = [
     abbreviation: 'MS',
     degree: 'Master of Science, Computer Science (Artificial Intelligence Track)',
     school: 'Stanford University, Stanford, CA',
-    date: 'Expected March 2026',
+    date: 'June 2025 - March 2026',
     current: true,
   },
   {
     abbreviation: 'BS',
     degree: 'Bachelor of Science, Mathematics',
     school: 'Stanford University, Stanford, CA',
-    date: 'June 2025',
+    date: 'September 2021 - June 2025',
     current: false,
   },
 ];

@@ -6,49 +6,67 @@ import CodeBackground from './CodeBackground';
 
 const experiences = [
   {
-    title: 'Machine Learning Researcher',
-    organization: 'Stanford Computer Science Department',
+    title: 'Statistical Modeling & Inference Researcher',
+    organization: 'Stanford University',
     location: 'Stanford, CA',
-    period: 'September 2024 - June 2025',
+    period: 'June 2025 - September 2025',
     description:
-      'I developed a contrastive deep learning model to identify regulatory differences in chromatin accessibility across normal, tumor, and metastatic states. By leveraging CNN architectures like ChromBPNet, I applied advanced machine learning techniques to enhance the precision of sequence-to-function predictions, with a focus on refining computational models for disease progression, particularly in thyroid cancer.',
-    tags: ['Deep Learning', 'CNN', 'Medical Imaging', 'Python'],
+      'Conducted research on latent-variable and probabilistic models for uncertainty quantification in high-dimensional, noisy datasets. Developed and implemented Bayesian inference frameworks and variational optimization algorithms to uncover hidden structure and mitigate estimation bias in predictive modeling. Leveraging stochastic process theory, information-theoretic measures, and causal inference techniques to enhance model identifiability, interpretability, and robustness in complex real-world systems.',
+    tags: ['Bayesian Inference', 'Probabilistic Modeling', 'Causal Inference', 'Python'],
   },
   {
-    title: 'AI Researcher',
-    organization: 'Stanford Transitional AI Lab',
-    location: 'Stanford, CA',
-    period: 'September 2024 - January 2025',
+    title: 'Founder & CTO',
+    organization: 'Vony Lending',
+    location: 'Palo Alto, CA',
+    period: 'June 2024 - September 2025',
     description:
-      'At the STAI Lab, I work on interdisciplinary research that bridges AI methodologies with real-world clinical applications, focusing on advancing precision healthcare. My role involves developing AI-driven solutions, particularly in the areas of Computer Vision and Medical Imaging, to address technological gaps in clinical settings.',
-    tags: ['Computer Vision', 'Medical AI', 'Precision Healthcare'],
+      'Founded and led a fintech venture developing a peer-to-peer micro-lending platform that facilitates loan requests, offers, and approvals within trusted personal networks. Architected the platform\'s core lending engine, implementing structured workflows for request handling, dynamic interest logic, and repayment tracking. Directed full-stack development, integrating a responsive front end with a scalable backend and optimized database schema to ensure high system reliability, low-latency performance, and seamless user interaction.',
+    tags: ['Fintech', 'Full-Stack', 'System Architecture', 'Leadership'],
   },
   {
-    title: 'Software Engineering Intern',
+    title: 'Google Intern',
     organization: 'Google',
     location: 'Mountain View, CA',
     period: 'July 2023 - September 2023',
     description:
-      'Developed a high-performance user interface for a fraud detection system within Google Ads, leveraging TypeScript, HTML, and CSS to build scalable, production-quality features. Collaborated with cross-functional teams to translate complex fraud detection workflows into intuitive designs, optimizing both usability and system reliability for a platform handling billions of ad transactions.',
+      'Developed a high-performance, production-scale interface for a real-time fraud detection platform within Google Ads, leveraging TypeScript, HTML, and CSS to engineer modular, scalable, and latency-optimized components. Collaborated with cross-functional teams to translate complex fraud analytics pipelines and anomaly detection workflows into intuitive, data-rich visual systems, enhancing usability, reliability, and decision speed across a platform processing billions of ad transactions daily.',
     tags: ['TypeScript', 'UI/UX', 'Frontend Development', 'Google Ads'],
   },
   {
     title: 'Teaching Assistant - CS227b: General Game Playing',
     organization: 'Stanford Computer Science Department',
     location: 'Stanford, CA',
-    period: 'March 2024 - June 2024',
+    period: 'March 2025 - June 2025',
     description:
-      'Assisted in teaching a graduate-level AI course on General Game Playing, focusing on the design of autonomous agents that learn and execute strategies for previously unseen games based solely on formal logic descriptions. Guided students in applying methods from automated reasoning, symbolic knowledge representation, adversarial and heuristic search, and resource-bounded planning, while refining my own expertise in algorithmic game theory and general-purpose intelligence systems.',
+      'Assisted in teaching a graduate-level AI course on the design of autonomous agents capable of strategic reasoning in novel environments. Guided students in applying methods from automated reasoning, symbolic knowledge representation, adversarial and heuristic search, resource-bounded planning, and algorithmic game theory to develop general-purpose intelligence systems that learn and execute strategies from formal game descriptions.',
     tags: ['AI', 'Game Theory', 'Teaching', 'Automated Reasoning'],
   },
   {
-    title: 'Math Department Tutor',
+    title: 'Machine Learning Researcher',
+    organization: 'Stanford Computer Science Department',
+    location: 'Stanford, CA',
+    period: 'September 2024 - June 2025',
+    description:
+      'Developed a contrastive deep learning model to identify regulatory differences in chromatin accessibility across normal, tumor, and metastatic states. By leveraging CNN architectures like ChromBPNet, applied advanced machine learning techniques to enhance the precision of sequence-to-function predictions, with a focus on refining computational models for disease progression, particularly in thyroid cancer.',
+    tags: ['Deep Learning', 'CNN', 'Bioinformatics', 'Python'],
+  },
+  {
+    title: 'Computational Modeling Researcher',
+    organization: 'Stanford Translational AI Lab',
+    location: 'Stanford, CA',
+    period: 'September 2024 - December 2024',
+    description:
+      'Conducted interdisciplinary research uniting artificial intelligence, probabilistic modeling, and computational medicine. Developed and deployed deep learning architectures for computer vision and medical imaging, integrating probabilistic inference to quantify uncertainty and extract high-fidelity biomarkers. Leveraged Bayesian and data-driven modeling frameworks to improve diagnostic prediction, enhance model interpretability, and advance precision healthcare through statistically robust AI systems.',
+    tags: ['Computer Vision', 'Medical Imaging', 'Bayesian Modeling', 'Healthcare AI'],
+  },
+  {
+    title: 'Mathematics Department Tutor',
     organization: 'Stanford University',
     location: 'Stanford, CA',
     period: 'September 2024 - Present',
     description:
-      "In my role as a tutor for Stanford's Math Department to support students in mastering their math courses. Through drop-in tutoring sessions, I provide personalized academic support, clarify complex concepts, and guide students through challenging coursework and problem-solving techniques. My role extends beyond simply answering questions, I'm dedicated to fostering a deeper understanding of mathematical principles, encouraging independent learning, and enhancing students' confidence in their analytical abilities.",
-    tags: ['Mathematics', 'Teaching', 'Mentoring'],
+      'Provide advanced instruction in theoretical and applied mathematics through Stanford\'s Mathematics Department. Lead students through rigorous explorations of vector space theory, multivariable analysis, and differential systems, with specialized focus on spectral and matrix theory, eigenvalue and singular value decomposition (SVD), dimensionality reduction, proof construction, and the analysis of linear operators and dynamical systems.',
+    tags: ['Mathematics', 'Linear Algebra', 'Teaching', 'Mentoring'],
   },
 ];
 
