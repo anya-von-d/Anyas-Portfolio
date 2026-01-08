@@ -176,7 +176,7 @@ export default function NeuralNetworkBackground() {
     <canvas
       ref={canvasRef}
       className="absolute left-0 right-0 bottom-0 w-full pointer-events-none"
-      style={{ opacity: 0.6, top: '80px' }}
+      style={{ opacity: 0.6, top: '120px' }}
     />
   );
 }
