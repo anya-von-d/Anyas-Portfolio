@@ -78,12 +78,12 @@ export default function Experience() {
             <div className="w-16" />
           </div>
 
-          <div className="bg-[#1A1A1A] p-6 md:p-8 min-h-[400px]">
+          <div className="bg-white p-6 md:p-8 min-h-[400px]">
             <div className="space-y-4">
               {experiences.map((exp, index) => (
                 <Card
                   key={index}
-                  className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in border-white/10"
+                  className="overflow-hidden transition-all duration-300 bg-gray-50 hover-elevate active-elevate-2 animate-fade-in border-gray-200"
                   style={{ animationDelay: `${index * 100}ms` }}
                   data-testid={`card-experience-${index}`}
                 >
@@ -94,12 +94,12 @@ export default function Experience() {
                   >
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
-                        <h3 className="font-mono text-base md:text-lg mb-2 text-white" data-testid={`text-title-${index}`}>
+                        <h3 className="font-mono text-base md:text-lg mb-2 text-[#1A1A1A]" data-testid={`text-title-${index}`}>
                           <span className="text-primary">&lt;</span>
                           {exp.title.toUpperCase()}
                           <span className="text-primary">/&gt;</span>
                         </h3>
-                        <p className="text-white/70 text-sm mb-1" data-testid={`text-org-${index}`}>
+                        <p className="text-gray-600 text-sm mb-1" data-testid={`text-org-${index}`}>
                           {exp.organization}
                         </p>
                         <div className="flex items-center gap-2 text-xs text-primary font-mono">
@@ -110,7 +110,7 @@ export default function Experience() {
                         {expandedIndex === index ? (
                           <ChevronUp className="w-5 h-5 text-primary" />
                         ) : (
-                          <ChevronDown className="w-5 h-5 text-white/60" />
+                          <ChevronDown className="w-5 h-5 text-gray-400" />
                         )}
                       </div>
                     </div>
@@ -118,14 +118,14 @@ export default function Experience() {
 
                   {expandedIndex === index && (
                     <div className="px-4 md:px-5 pb-4 md:pb-5 animate-accordion-down" data-testid={`content-experience-${index}`}>
-                      <div className="pt-3 border-t border-white/10">
-                        <p className="text-white/70 leading-relaxed mb-3 text-sm">{exp.description}</p>
+                      <div className="pt-3 border-t border-gray-200">
+                        <p className="text-gray-600 leading-relaxed mb-3 text-sm">{exp.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {exp.tags.map((tag) => (
                             <Badge
                               key={tag}
                               variant="secondary"
-                              className="font-mono text-xs bg-white/10 text-white border-white/20"
+                              className="font-mono text-xs bg-gray-100 text-gray-700 border-gray-300"
                               data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
                             >
                               {tag}
