@@ -68,7 +68,7 @@ export default function Experience() {
         </div>
 
         <div className="rounded-lg overflow-hidden shadow-2xl">
-          <div className="bg-[#2A2A2A] px-4 py-3 flex items-center gap-3 border-b border-black/30">
+          <div className="bg-white px-4 py-3 flex items-center gap-3 border-b border-gray-200">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
