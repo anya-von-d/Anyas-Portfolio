@@ -19,13 +19,13 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
-            <span className="text-[#33FF33]">&lt;</span><span className="text-white">About</span><span className="text-[#33FF33]">/&gt;</span>
+            <span className="text-[#33FF33]">&lt;</span><span className="text-black">About</span><span className="text-[#33FF33]">/&gt;</span>
           </h2>
         </div>
         
         <div>
           <div className="mb-12 max-w-3xl mx-auto text-center">
-            <p className="text-lg leading-relaxed text-white">
+            <p className="text-lg leading-relaxed text-black">
               Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
             </p>
           </div>
