@@ -15,17 +15,17 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-16 px-6 bg-[#C4C4C4]" data-testid="section-about">
+    <section id="about" className="relative py-16 px-6 bg-[#737373]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
-            <span className="text-[#016742]">&lt;</span><span className="text-black">About</span><span className="text-[#016742]">/&gt;</span>
+            <span className="text-[#33FF33]">&lt;</span><span className="text-white">About</span><span className="text-[#33FF33]">/&gt;</span>
           </h2>
         </div>
         
         <div>
           <div className="mb-12 max-w-3xl mx-auto text-center">
-            <p className="text-lg leading-relaxed text-black">
+            <p className="text-lg leading-relaxed text-white">
               Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
             </p>
           </div>
