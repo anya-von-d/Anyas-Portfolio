@@ -61,7 +61,7 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-16 px-6" data-testid="section-experience">
       <div className="relative max-w-5xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <h2 className="font-mono text-3xl md:text-4xl text-white" data-testid="heading-experience">
             <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
           </h2>
@@ -139,13 +139,6 @@ export default function Experience() {
               ))}
             </div>
           </div>
-        </div>
-
-        <div className="flex justify-center">
-          <div className="w-24 h-8 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A]" />
-        </div>
-        <div className="flex justify-center">
-          <div className="w-40 h-3 bg-[#2A2A2A] rounded-b-lg" />
         </div>
       </div>
     </section>
