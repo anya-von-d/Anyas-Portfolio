@@ -15,15 +15,6 @@ const experiences = [
     tags: ['Bayesian Inference', 'Probabilistic Modeling', 'Causal Inference', 'Python'],
   },
   {
-    title: 'Founder & CTO',
-    organization: 'Vony Lending',
-    location: 'Palo Alto, CA',
-    period: 'June 2024 - September 2025',
-    description:
-      'Founded and led a fintech venture developing a peer-to-peer micro-lending platform that facilitates loan requests, offers, and approvals within trusted personal networks. Architected the platform\'s core lending engine, implementing structured workflows for request handling, dynamic interest logic, and repayment tracking. Directed full-stack development, integrating a responsive front end with a scalable backend and optimized database schema to ensure high system reliability, low-latency performance, and seamless user interaction.',
-    tags: ['Fintech', 'Full-Stack', 'System Architecture', 'Leadership'],
-  },
-  {
     title: 'Google Intern',
     organization: 'Google',
     location: 'Mountain View, CA',
