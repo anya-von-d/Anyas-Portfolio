@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import NeuralNetworkBackground from './NeuralNetworkBackground';
 
 const courses = [
   'Advanced Probability Theory',
@@ -42,8 +43,9 @@ export default function Coursework() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section id="coursework" className="relative py-16 px-6 bg-[#C4C4C4]" data-testid="section-coursework">
-      <div className="relative max-w-5xl mx-auto">
+    <section id="coursework" className="relative py-16 px-6 bg-[#C4C4C4] overflow-hidden" data-testid="section-coursework">
+      <NeuralNetworkBackground />
+      <div className="relative max-w-5xl mx-auto z-10">
         <div className="mb-8 text-center">
           <h2 className="font-mono text-3xl md:text-4xl text-black" data-testid="heading-coursework">
             <span className="text-[#016742]">&lt;</span>Background & Skills<span className="text-[#016742]">/&gt;</span>
