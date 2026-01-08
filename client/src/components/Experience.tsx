@@ -59,85 +59,93 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="relative pt-16 pb-32 px-6" data-testid="section-experience">
-      <div className="relative max-w-6xl mx-auto">
-        <div className="relative flex items-end">
-          <div className="relative" style={{ width: '350px', height: '80px' }}>
-            <svg className="w-full h-full absolute bottom-0" viewBox="0 0 350 80" preserveAspectRatio="none" style={{ display: 'block' }}>
-              <path
-                d="M 0,60 Q 20,60 35,40 Q 50,20 75,20 L 275,20 Q 300,20 315,40 Q 330,60 350,60 L 350,80 L 0,80 Z"
-                fill="#1A1A1A"
-              />
-            </svg>
-            <div className="absolute inset-0 flex items-center justify-center pt-6">
-              <h2 className="font-mono text-xl md:text-2xl text-white whitespace-nowrap" data-testid="heading-experience">
-                <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
-              </h2>
+    <section id="experience" className="relative py-16 px-6" data-testid="section-experience">
+      <div className="relative max-w-5xl mx-auto">
+        <div className="rounded-lg overflow-hidden shadow-2xl">
+          <div className="bg-[#2A2A2A] px-4 py-3 flex items-center gap-3 border-b border-black/30">
+            <div className="flex items-center gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500" />
+              <div className="w-3 h-3 rounded-full bg-green-500" />
+            </div>
+            <div className="flex-1 flex justify-center">
+              <div className="bg-[#1A1A1A] rounded px-4 py-1">
+                <h2 className="font-mono text-sm text-white/70" data-testid="heading-experience">
+                  <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
+                </h2>
+              </div>
+            </div>
+            <div className="w-16" />
+          </div>
+
+          <div className="bg-[#1A1A1A] p-6 md:p-8 min-h-[400px]">
+            <div className="space-y-4">
+              {experiences.map((exp, index) => (
+                <Card
+                  key={index}
+                  className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in border-white/10"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                  data-testid={`card-experience-${index}`}
+                >
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="w-full p-4 md:p-5 text-left transition-all"
+                    data-testid={`button-expand-${index}`}
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-mono text-base md:text-lg mb-2 text-white" data-testid={`text-title-${index}`}>
+                          <span className="text-primary">&lt;</span>
+                          {exp.title.toUpperCase()}
+                          <span className="text-primary">/&gt;</span>
+                        </h3>
+                        <p className="text-white/70 text-sm mb-1" data-testid={`text-org-${index}`}>
+                          {exp.organization}
+                        </p>
+                        <div className="flex items-center gap-2 text-xs text-primary font-mono">
+                          <span>{exp.period}</span>
+                        </div>
+                      </div>
+                      <div className="shrink-0">
+                        {expandedIndex === index ? (
+                          <ChevronUp className="w-5 h-5 text-primary" />
+                        ) : (
+                          <ChevronDown className="w-5 h-5 text-white/60" />
+                        )}
+                      </div>
+                    </div>
+                  </button>
+
+                  {expandedIndex === index && (
+                    <div className="px-4 md:px-5 pb-4 md:pb-5 animate-accordion-down" data-testid={`content-experience-${index}`}>
+                      <div className="pt-3 border-t border-white/10">
+                        <p className="text-white/70 leading-relaxed mb-3 text-sm">{exp.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {exp.tags.map((tag) => (
+                            <Badge
+                              key={tag}
+                              variant="secondary"
+                              className="font-mono text-xs bg-white/10 text-white border-white/20"
+                              data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                            >
+                              {tag}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </Card>
+              ))}
             </div>
           </div>
-          <div className="flex-1 bg-[#1A1A1A] h-5"></div>
         </div>
 
-        <div className="bg-[#1A1A1A] p-8 md:p-12">
-          <div className="space-y-6">
-            {experiences.map((exp, index) => (
-              <Card
-                key={index}
-                className="overflow-hidden transition-all duration-300 bg-white/5 hover-elevate active-elevate-2 animate-fade-in"
-                style={{ animationDelay: `${index * 100}ms` }}
-                data-testid={`card-experience-${index}`}
-              >
-                <button
-                  onClick={() => toggleExpand(index)}
-                  className="w-full p-6 text-left transition-all"
-                  data-testid={`button-expand-${index}`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-mono text-lg md:text-xl mb-3 text-white" data-testid={`text-title-${index}`}>
-                        <span className="text-primary">&lt;</span>
-                        {exp.title.toUpperCase()}
-                        <span className="text-primary">/&gt;</span>
-                      </h3>
-                      <p className="text-white/70 mb-2" data-testid={`text-org-${index}`}>
-                        {exp.organization}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm text-primary font-mono">
-                        <span>{exp.period}</span>
-                      </div>
-                    </div>
-                    <div className="shrink-0">
-                      {expandedIndex === index ? (
-                        <ChevronUp className="w-5 h-5 text-primary" />
-                      ) : (
-                        <ChevronDown className="w-5 h-5 text-white/60" />
-                      )}
-                    </div>
-                  </div>
-                </button>
-
-                {expandedIndex === index && (
-                  <div className="px-6 pb-6 animate-accordion-down" data-testid={`content-experience-${index}`}>
-                    <div className="pt-4 border-t border-white/10">
-                      <p className="text-white/70 leading-relaxed mb-4">{exp.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {exp.tags.map((tag) => (
-                          <Badge
-                            key={tag}
-                            variant="secondary"
-                            className="font-mono text-xs bg-white/10 text-white border-white/20"
-                            data-testid={`badge-tag-${tag.toLowerCase().replace(/\s+/g, '-')}`}
-                          >
-                            {tag}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </Card>
-            ))}
-          </div>
+        <div className="flex justify-center">
+          <div className="w-24 h-8 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A]" />
+        </div>
+        <div className="flex justify-center">
+          <div className="w-40 h-3 bg-[#2A2A2A] rounded-b-lg" />
         </div>
       </div>
     </section>
