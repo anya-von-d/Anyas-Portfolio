@@ -33,7 +33,10 @@ export default function Hero() {
   }, []);
 
   const scrollToContact = () => {
-    window.open('mailto:anya2025@stanford.edu');
+    const element = document.getElementById('contact');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -80,7 +83,7 @@ export default function Hero() {
                 data-testid="button-linkedin"
               >
                 <a
-                  href="https://linkedin.com"
+                  href="https://www.linkedin.com/in/anya-von-diessl/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="gap-2"
