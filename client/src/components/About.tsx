@@ -1,19 +1,3 @@
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-
-const skills = [
-  'Machine Learning',
-  'Python',
-  'C++',
-  'MATLAB',
-  'Deep Learning',
-  'Computer Vision',
-  'NLP',
-  'Medical Imaging',
-  'TypeScript',
-  'HTML/CSS',
-];
-
 const focuses = [
   {
     title: 'AI Research',
@@ -33,34 +17,17 @@ export default function About() {
   return (
     <section id="about" className="relative py-16 px-6 bg-[#35B276]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
             <span className="text-[#006B3D]">&lt;</span><span className="text-white">About</span><span className="text-[#006B3D]">/&gt;</span>
           </h2>
         </div>
         
         <div>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="space-y-6 animate-slide-in-left">
-              <p className="text-lg leading-relaxed text-[#1A1A1A]">
-                Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
-              </p>
-            </div>
-
-            <div className="space-y-4 animate-slide-in-right">
-              <div className="flex flex-wrap gap-2">
-                {skills.map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="outline"
-                    className="font-mono text-sm px-3 py-1 !border-white text-[#1A1A1A] hover:bg-white hover:text-primary transition-colors cursor-default"
-                    data-testid={`badge-skill-${skill.toLowerCase().replace(/\s+/g, '-')}`}
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </div>
+          <div className="mb-12 max-w-3xl mx-auto text-center">
+            <p className="text-lg leading-relaxed text-[#1A1A1A]">
+              Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
+            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
