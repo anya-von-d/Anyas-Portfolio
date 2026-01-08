@@ -38,27 +38,40 @@ export default function About() {
                 style={{ animationDelay: `${index * 100}ms` }}
                 data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <div className="bg-[#C9C2B5] rounded-lg p-3 shadow-lg hover-elevate active-elevate-2 transition-all cursor-default">
-                  <div className="bg-[#1A1A1A] rounded p-4 min-h-[140px] border-4 border-[#2A2A2A] shadow-inner">
-                    <h3 className="font-mono font-bold text-lg mb-2 text-primary">&gt; {focus.title}</h3>
-                    <p className="text-[#98C379] font-mono text-sm leading-relaxed">{focus.description}</p>
-                    <span className="inline-block w-2 h-4 bg-primary animate-pulse mt-2" />
+                <div className="bg-gradient-to-b from-[#D4C9A8] to-[#C4B998] rounded-t-xl rounded-b-lg p-4 shadow-xl hover-elevate active-elevate-2 transition-all cursor-default border-2 border-[#B8AD8C]">
+                  <div className="flex gap-1 mb-1">
+                    {[...Array(8)].map((_, i) => (
+                      <div key={i} className="flex-1 h-[2px] bg-[#A89878]" />
+                    ))}
                   </div>
-                  <div className="flex justify-center mt-3">
-                    <div className="w-8 h-1 bg-[#A8A095] rounded-full" />
+                  
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-lg pointer-events-none" />
+                    <div className="bg-[#0A1810] rounded-lg p-4 min-h-[150px] border-8 border-[#3A3A3A] shadow-[inset_0_0_30px_rgba(0,0,0,0.8)]">
+                      <div className="absolute top-2 right-2 w-1 h-1 rounded-full bg-[#00FF00] shadow-[0_0_4px_#00FF00] animate-pulse" />
+                      <h3 className="font-mono font-bold text-base mb-2 text-[#00FF00] drop-shadow-[0_0_2px_#00FF00]">&gt; {focus.title}_</h3>
+                      <p className="text-[#00DD00] font-mono text-xs leading-relaxed opacity-90">{focus.description}</p>
+                      <span className="inline-block w-2 h-3 bg-[#00FF00] animate-pulse mt-2 shadow-[0_0_4px_#00FF00]" />
+                    </div>
                   </div>
-                  <div className="flex justify-center mt-2">
-                    <div className="flex gap-2">
-                      <div className="w-2 h-2 rounded-full bg-[#8B8578]" />
-                      <div className="w-2 h-2 rounded-full bg-[#8B8578]" />
+                  
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="w-12 h-1 bg-[#2A2A2A] rounded" />
+                      <div className="text-[8px] font-mono text-[#6B6150] uppercase tracking-wider">Model {index + 1}</div>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <div className="w-3 h-3 rounded-sm bg-[#8B7B58] border border-[#6B5B38] shadow-inner" />
+                      <div className="w-2 h-2 rounded-full bg-[#4A4A4A] border border-[#3A3A3A]" />
                     </div>
                   </div>
                 </div>
+                
                 <div className="flex justify-center">
-                  <div className="w-16 h-6 bg-gradient-to-b from-[#C9C2B5] to-[#B8B1A4] rounded-b-sm" />
+                  <div className="w-20 h-8 bg-gradient-to-b from-[#C4B998] to-[#B4A988] border-x-2 border-[#A89878]" />
                 </div>
                 <div className="flex justify-center">
-                  <div className="w-24 h-2 bg-[#A8A095] rounded-b-lg shadow-md" />
+                  <div className="w-32 h-3 bg-gradient-to-b from-[#B4A988] to-[#A49978] rounded-b-lg shadow-lg border-2 border-t-0 border-[#948868]" />
                 </div>
               </div>
             ))}
