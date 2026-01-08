@@ -80,9 +80,9 @@ export default function NeuralNetworkBackground() {
         
         while (!valid && attempts < 50) {
           seed++;
-          x = 30 + seededRandom(seed) * (width - 60);
+          x = 20 + seededRandom(seed) * (width - 40);
           seed++;
-          y = 20 + seededRandom(seed) * (height - 40);
+          y = 100 + seededRandom(seed) * (height - 120);
           
           valid = true;
           for (const node of nodesRef.current) {
@@ -198,8 +198,8 @@ export default function NeuralNetworkBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute left-0 right-0 bottom-0 w-full pointer-events-none"
-      style={{ opacity: 0.6, top: '120px' }}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ opacity: 0.6 }}
     />
   );
 }
