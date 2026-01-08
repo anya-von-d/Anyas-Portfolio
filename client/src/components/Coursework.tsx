@@ -44,7 +44,7 @@ export default function Coursework() {
   return (
     <section id="coursework" className="relative py-16 px-6" data-testid="section-coursework">
       <div className="relative max-w-5xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-8 text-center">
           <h2 className="font-mono text-3xl md:text-4xl text-white" data-testid="heading-coursework">
             <span className="text-primary">&lt;</span>Background & Skills<span className="text-primary">/&gt;</span>
           </h2>

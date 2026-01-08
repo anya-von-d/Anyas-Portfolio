@@ -23,7 +23,7 @@ export default function Education() {
   return (
     <section id="education" className="py-16 px-6 bg-[#016742]" data-testid="section-education">
       <div className="max-w-6xl mx-auto">
-        <div className="mb-16">
+        <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4 text-white" data-testid="heading-education">
             <span className="text-primary">&lt;</span>Education<span className="text-primary">/&gt;</span>
           </h2>
