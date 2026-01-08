@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Mail, Linkedin, Download } from 'lucide-react';
+import BinaryBackground from './BinaryBackground';
 
 const profileImage = '/attached_assets/Screenshot 2025-11-13 at 9.11.00 PM_1763097063110.png';
 
@@ -36,8 +37,9 @@ export default function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20" data-testid="section-hero">
-      <div className="max-w-6xl mx-auto w-full">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-20 relative overflow-hidden" data-testid="section-hero">
+      <BinaryBackground />
+      <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight" data-testid="text-name">
