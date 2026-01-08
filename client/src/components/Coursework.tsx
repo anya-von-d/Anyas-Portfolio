@@ -8,11 +8,11 @@ const courses = [
   'Optimization',
   'Statistical Inference',
   'Partial Differential Equations',
-  'Algorithms',
+  'Continuous Mathematical Methods',
   'Machine Learning',
   'Deep Learning',
   'Artificial Intelligence',
-  'Continuous Mathematical Methods',
+  'Algorithms',
   'Decision Making Under Uncertainty',
 ];
 
@@ -35,6 +35,7 @@ const technicalSkills = [
   'Parallel Programming',
   'Monte Carlo Simulation',
   'Bayesian Inference',
+  'Web Development',
 ];
 
 export default function Coursework() {
