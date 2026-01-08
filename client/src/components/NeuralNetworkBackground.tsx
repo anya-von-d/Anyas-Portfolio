@@ -59,13 +59,13 @@ export default function NeuralNetworkBackground() {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
       const layers = [4, 6, 8, 6, 4];
-      const layerSpacing = width / (layers.length + 1);
+      const layerSpacing = width / layers.length;
       
       nodesRef.current = [];
       connectionsRef.current = [];
 
       layers.forEach((nodeCount, layerIndex) => {
-        const x = layerSpacing * (layerIndex + 1);
+        const x = 20 + layerSpacing * layerIndex;
         const nodeSpacing = height / (nodeCount + 1);
         
         for (let i = 0; i < nodeCount; i++) {
