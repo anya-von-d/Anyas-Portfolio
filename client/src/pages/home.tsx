@@ -7,13 +7,6 @@ import Coursework from '@/components/Coursework';
 import Contact from '@/components/Contact';
 import { Button } from '@/components/ui/button';
 
-const skillsList = [
-  'Python', 'NumPy', 'pandas', 'PyTorch', 'scikit-learn', 'TensorFlow',
-  'R', 'MATLAB', 'C++', 'SQL', 'Git', 'Linux', 'Bash',
-  'High-Performance Computing', 'Numerical Methods', 'Parallel Programming',
-  'Monte Carlo Simulation', 'Bayesian Inference', 'Web Development'
-];
-
 export default function Home() {
   return (
     <div className="relative">
@@ -24,22 +17,6 @@ export default function Home() {
         </div>
         <div className="relative bg-[#35B276]">
           <About />
-        </div>
-        <div className="bg-[#1A1A1A] py-8 px-6 overflow-hidden" data-testid="banner-skills">
-          <div className="max-w-6xl mx-auto">
-            <div className="font-mono text-sm md:text-base overflow-x-auto whitespace-nowrap scrollbar-hide">
-              <span className="text-primary">skills_list</span>
-              <span className="text-white"> = </span>
-              <span className="text-white">[</span>
-              {skillsList.map((skill, index) => (
-                <span key={skill}>
-                  <span className="text-[#98C379]">"{skill}"</span>
-                  {index < skillsList.length - 1 && <span className="text-white">, </span>}
-                </span>
-              ))}
-              <span className="text-white">]</span>
-            </div>
-          </div>
         </div>
         <div className="relative bg-[#0A0A0A]">
           <Experience />
