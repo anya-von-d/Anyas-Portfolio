@@ -61,6 +61,12 @@ export default function Experience() {
   return (
     <section id="experience" className="relative py-16 px-6" data-testid="section-experience">
       <div className="relative max-w-5xl mx-auto">
+        <div className="mb-8">
+          <h2 className="font-mono text-3xl md:text-4xl text-white" data-testid="heading-experience">
+            <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
+          </h2>
+        </div>
+
         <div className="rounded-lg overflow-hidden shadow-2xl">
           <div className="bg-[#2A2A2A] px-4 py-3 flex items-center gap-3 border-b border-black/30">
             <div className="flex items-center gap-2">
@@ -68,13 +74,7 @@ export default function Experience() {
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
             </div>
-            <div className="flex-1 flex justify-center">
-              <div className="bg-[#1A1A1A] rounded px-4 py-1">
-                <h2 className="font-mono text-sm text-white/70" data-testid="heading-experience">
-                  <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
-                </h2>
-              </div>
-            </div>
+            <div className="flex-1" />
             <div className="w-16" />
           </div>
 
