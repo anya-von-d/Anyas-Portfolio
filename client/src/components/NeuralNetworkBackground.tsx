@@ -123,12 +123,12 @@ export default function NeuralNetworkBackground() {
         if (node.currentRadius > 0.1) {
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.currentRadius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(51, 255, 51, ${0.6 + layerProgress * 0.4})`;
+          ctx.fillStyle = `rgba(1, 103, 66, ${0.6 + layerProgress * 0.4})`;
           ctx.fill();
           
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.currentRadius + 2, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(51, 255, 51, ${0.2 * layerProgress})`;
+          ctx.strokeStyle = `rgba(1, 103, 66, ${0.2 * layerProgress})`;
           ctx.lineWidth = 2;
           ctx.stroke();
         }
@@ -151,7 +151,7 @@ export default function NeuralNetworkBackground() {
           ctx.beginPath();
           ctx.moveTo(fromNode.x, fromNode.y);
           ctx.lineTo(endX, endY);
-          ctx.strokeStyle = `rgba(51, 255, 51, ${conn.opacity})`;
+          ctx.strokeStyle = `rgba(1, 103, 66, ${conn.opacity})`;
           ctx.lineWidth = 1;
           ctx.stroke();
         }
