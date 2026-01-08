@@ -71,7 +71,7 @@ export default function Coursework() {
                   {courses.map((course, index) => (
                     <Card
                       key={course}
-                      className={`p-3 hover-elevate active-elevate-2 cursor-default transition-all animate-fade-in bg-white/5 !border-[#016742] ${
+                      className={`p-3 hover-elevate active-elevate-2 cursor-default transition-all animate-fade-in bg-white/5 !border-[#33FF33] ${
                         hoveredIndex === index ? 'scale-105' : ''
                       }`}
                       style={{ animationDelay: `${index * 50}ms` }}
@@ -79,7 +79,7 @@ export default function Coursework() {
                       onMouseLeave={() => setHoveredIndex(null)}
                       data-testid={`card-course-${index}`}
                     >
-                      <p className="font-mono text-xs leading-relaxed text-[#016742]">{course}</p>
+                      <p className="font-mono text-xs leading-relaxed text-[#33FF33]">{course}</p>
                     </Card>
                   ))}
                 </div>
@@ -105,7 +105,7 @@ export default function Coursework() {
 
                 <Card className="mt-6 p-4 border-primary/30 bg-white/5">
                   <p className="text-white/70 leading-relaxed text-sm">
-                    <span className="font-display font-semibold text-primary block mb-2">
+                    <span className="font-display font-semibold text-[#33FF33] block mb-2">
                       Specialized Expertise
                     </span>
                     Strong foundation in mathematics and computer science with hands-on experience in building

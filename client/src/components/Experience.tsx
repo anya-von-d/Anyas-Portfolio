@@ -106,14 +106,14 @@ export default function Experience() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1 min-w-0">
                         <h3 className="font-mono text-base md:text-lg mb-2 text-[#1A1A1A]" data-testid={`text-title-${index}`}>
-                          <span className="text-primary">&lt;</span>
+                          <span className="text-[#33FF33]">&lt;</span>
                           {exp.title.toUpperCase()}
-                          <span className="text-primary">/&gt;</span>
+                          <span className="text-[#33FF33]">/&gt;</span>
                         </h3>
                         <p className="text-gray-600 text-sm mb-1" data-testid={`text-org-${index}`}>
                           {exp.organization}
                         </p>
-                        <div className="flex items-center gap-2 text-xs text-primary font-mono">
+                        <div className="flex items-center gap-2 text-xs text-[#33FF33] font-mono">
                           <span>{exp.period}</span>
                         </div>
                       </div>
