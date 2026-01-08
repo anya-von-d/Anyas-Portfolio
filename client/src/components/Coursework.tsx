@@ -40,8 +40,8 @@ export default function Coursework() {
         </div>
 
         <div className="rounded-lg overflow-hidden shadow-2xl">
-          <div className="bg-[#2A2A2A] px-4 py-3 flex items-center gap-3 border-b border-black/30">
-            <div className="flex items-center gap-2 md:invisible">
+          <div className="bg-[#2A2A2A] px-4 py-3 flex md:hidden items-center gap-3 border-b border-black/30">
+            <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
               <div className="w-3 h-3 rounded-full bg-green-500" />
