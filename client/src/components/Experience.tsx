@@ -70,7 +70,7 @@ export default function Experience() {
         </div>
 
         <div className="rounded-lg overflow-hidden shadow-2xl">
-          <div className="bg-white px-4 py-3 flex items-center gap-3 border-b border-gray-200">
+          <div className="bg-[#E8E8E8] px-4 py-3 flex items-center gap-3 border-b border-gray-300">
             <div className="flex items-center gap-2">
               <div className="w-3 h-3 rounded-full bg-red-500" />
               <div className="w-3 h-3 rounded-full bg-yellow-500" />
@@ -80,7 +80,7 @@ export default function Experience() {
             <div className="w-16" />
           </div>
 
-          <div className="bg-white p-6 md:p-8 min-h-[400px]">
+          <div className="bg-[#F0F0F0] p-6 md:p-8 min-h-[400px]">
             <div className="space-y-4">
               {experiences.map((exp, index) => (
                 <Card
