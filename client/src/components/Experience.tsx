@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ChevronDown, ChevronUp, Briefcase, Calendar } from 'lucide-react';
+import CodeBackground from './CodeBackground';
 
 const experiences = [
   {
@@ -59,8 +60,9 @@ export default function Experience() {
   };
 
   return (
-    <section id="experience" className="relative py-16 px-6" data-testid="section-experience">
-      <div className="relative max-w-5xl mx-auto">
+    <section id="experience" className="relative py-16 px-6 overflow-hidden" data-testid="section-experience">
+      <CodeBackground />
+      <div className="relative max-w-5xl mx-auto z-10">
         <div className="mb-8 text-center">
           <h2 className="font-mono text-3xl md:text-4xl text-white" data-testid="heading-experience">
             <span className="text-primary">&lt;</span>Experience<span className="text-primary">/&gt;</span>
