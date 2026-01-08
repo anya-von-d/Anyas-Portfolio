@@ -58,8 +58,8 @@ export default function NeuralNetworkBackground() {
     const initializeNetwork = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const layers = [4, 6, 8, 6, 4];
-      const layerSpacing = width / layers.length;
+      const layers = [3, 5, 7, 9, 7, 5, 3];
+      const layerSpacing = (width - 40) / (layers.length - 1);
       
       nodesRef.current = [];
       connectionsRef.current = [];
@@ -74,7 +74,7 @@ export default function NeuralNetworkBackground() {
             x,
             y,
             layer: layerIndex,
-            targetRadius: 4 + Math.random() * 3,
+            targetRadius: 5 + Math.random() * 4,
             currentRadius: 0,
           });
         }
@@ -113,7 +113,7 @@ export default function NeuralNetworkBackground() {
       }
 
       const progress = progressRef.current;
-      const totalLayers = 5;
+      const totalLayers = 7;
 
       nodesRef.current.forEach((node) => {
         const layerDelay = node.layer / totalLayers;
