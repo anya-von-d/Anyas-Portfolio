@@ -14,8 +14,10 @@ export default function Home() {
       <ParticleBackground />
       <Navigation />
       <main>
-        <div className="relative bg-gradient-to-b from-[hsl(120,35%,85%)] via-[hsl(110,45%,80%)] via-[hsl(100,50%,75%)] to-[hsl(90,55%,70%)]">
+        <div className="relative bg-[#0A0A0A]">
           <Hero />
+        </div>
+        <div className="relative bg-[#35B276]">
           <About />
         </div>
         <div className="relative bg-gradient-to-b from-[hsl(90,55%,70%)] via-[hsl(90,50%,75%)] via-[hsl(100,45%,80%)] to-[hsl(110,40%,82%)]">

@@ -42,22 +42,22 @@ export default function Hero() {
       <div className="max-w-6xl mx-auto w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight" data-testid="text-name">
+            <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight text-white" data-testid="text-name">
               Anya Von Diessl
             </h1>
 
             <div className="h-12">
-              <p className="font-mono text-xl md:text-2xl text-primary" data-testid="text-role">
+              <p className="font-mono text-xl md:text-2xl text-gray-400" data-testid="text-role">
                 {displayedText}
-                <span className={`inline-block w-0.5 h-6 ml-1 bg-primary ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
+                <span className={`inline-block w-0.5 h-6 ml-1 bg-gray-400 ${showCursor ? 'opacity-100' : 'opacity-0'}`} />
               </p>
             </div>
 
-            <div className="flex items-center gap-2 font-mono text-sm text-muted-foreground flex-wrap">
+            <div className="flex items-center gap-2 font-mono text-sm text-gray-500 flex-wrap">
               <span>Stanford University</span>
-              <span className="text-primary">•</span>
+              <span className="text-gray-400">•</span>
               <span>MS Computer Science (AI)</span>
-              <span className="text-primary">•</span>
+              <span className="text-gray-400">•</span>
               <span>Palo Alto, CA</span>
             </div>
 
@@ -65,7 +65,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 onClick={scrollToContact}
-                className="gap-2"
+                className="gap-2 bg-white text-black hover:bg-gray-200"
                 data-testid="button-contact"
               >
                 <Mail className="w-4 h-4" />
@@ -76,6 +76,7 @@ export default function Hero() {
                 size="lg"
                 variant="outline"
                 asChild
+                className="!border-white/50 text-white hover:bg-white/10"
                 data-testid="button-linkedin"
               >
                 <a
@@ -93,11 +94,11 @@ export default function Hero() {
 
           <div className="flex justify-center md:justify-end">
             <div className="relative animate-float">
-              <Avatar className="w-64 h-64 md:w-80 md:h-80 border-4 border-primary/50 shadow-2xl shadow-primary/20 rounded-none">
+              <Avatar className="w-64 h-64 md:w-80 md:h-80 border-4 border-white/30 shadow-2xl shadow-black/50 rounded-none">
                 <AvatarImage src={profileImage} alt="Anya Von Diessl" />
-                <AvatarFallback className="text-6xl font-display bg-card">AVD</AvatarFallback>
+                <AvatarFallback className="text-6xl font-display bg-gray-800 text-white">AVD</AvatarFallback>
               </Avatar>
-              <div className="absolute inset-0 bg-primary/10 animate-glow pointer-events-none" />
+              <div className="absolute inset-0 bg-white/5 pointer-events-none" />
             </div>
           </div>
         </div>
