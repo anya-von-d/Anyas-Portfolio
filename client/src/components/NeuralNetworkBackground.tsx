@@ -58,48 +58,70 @@ export default function NeuralNetworkBackground() {
     const initializeNetwork = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const layers = [5, 7, 9, 11, 9, 7, 5];
-      const layerSpacing = (width - 40) / (layers.length - 1);
+      const numNodes = 50;
+      const minGap = 60;
       
       nodesRef.current = [];
       connectionsRef.current = [];
 
-      layers.forEach((nodeCount, layerIndex) => {
-        const x = 20 + layerSpacing * layerIndex;
-        const nodeSpacing = height / (nodeCount + 1);
+      const seededRandom = (seed: number) => {
+        let t = seed + 0x6D2B79F5;
+        t = Math.imul(t ^ t >>> 15, t | 1);
+        t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+
+      let seed = Math.floor(width * height);
+      
+      for (let i = 0; i < numNodes; i++) {
+        let attempts = 0;
+        let x, y;
+        let valid = false;
         
-        for (let i = 0; i < nodeCount; i++) {
-          const y = nodeSpacing * (i + 1);
+        while (!valid && attempts < 50) {
+          seed++;
+          x = 30 + seededRandom(seed) * (width - 60);
+          seed++;
+          y = 20 + seededRandom(seed) * (height - 40);
+          
+          valid = true;
+          for (const node of nodesRef.current) {
+            const dist = Math.sqrt((x - node.x) ** 2 + (y - node.y) ** 2);
+            if (dist < minGap) {
+              valid = false;
+              break;
+            }
+          }
+          attempts++;
+        }
+        
+        if (valid && x !== undefined && y !== undefined) {
+          const layer = Math.floor((x / width) * 7);
           nodesRef.current.push({
             x,
             y,
-            layer: layerIndex,
-            targetRadius: 5 + Math.random() * 4,
+            layer,
+            targetRadius: 6 + seededRandom(seed + i) * 6,
             currentRadius: 0,
           });
         }
-      });
+      }
 
-      let nodeIndex = 0;
-      for (let l = 0; l < layers.length - 1; l++) {
-        const currentLayerStart = nodeIndex;
-        const currentLayerEnd = nodeIndex + layers[l];
-        const nextLayerStart = currentLayerEnd;
-        const nextLayerEnd = nextLayerStart + layers[l + 1];
-
-        for (let i = currentLayerStart; i < currentLayerEnd; i++) {
-          for (let j = nextLayerStart; j < nextLayerEnd; j++) {
-            if (Math.random() > 0.3) {
-              connectionsRef.current.push({
-                from: i,
-                to: j,
-                opacity: 0,
-                targetOpacity: 0.1 + Math.random() * 0.3,
-              });
-            }
+      for (let i = 0; i < nodesRef.current.length; i++) {
+        for (let j = i + 1; j < nodesRef.current.length; j++) {
+          const nodeA = nodesRef.current[i];
+          const nodeB = nodesRef.current[j];
+          const dist = Math.sqrt((nodeA.x - nodeB.x) ** 2 + (nodeA.y - nodeB.y) ** 2);
+          
+          if (dist < 200 && nodeB.x > nodeA.x && seededRandom(seed + i * j) > 0.5) {
+            connectionsRef.current.push({
+              from: i,
+              to: j,
+              opacity: 0,
+              targetOpacity: 0.15 + seededRandom(seed + i + j) * 0.25,
+            });
           }
         }
-        nodeIndex = currentLayerEnd;
       }
     };
 
@@ -113,22 +135,23 @@ export default function NeuralNetworkBackground() {
       }
 
       const progress = progressRef.current;
-      const totalLayers = 7;
+      const canvasWidth = canvas.offsetWidth;
 
       nodesRef.current.forEach((node) => {
-        const layerDelay = node.layer / totalLayers;
-        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2.5));
+        const xProgress = node.x / canvasWidth;
+        const layerDelay = xProgress * 0.7;
+        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2));
         node.currentRadius = node.targetRadius * layerProgress;
 
         if (node.currentRadius > 0.1) {
           ctx.beginPath();
           ctx.arc(node.x, node.y, node.currentRadius, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(1, 103, 66, ${0.6 + layerProgress * 0.4})`;
+          ctx.fillStyle = `rgba(1, 103, 66, ${0.5 + layerProgress * 0.5})`;
           ctx.fill();
           
           ctx.beginPath();
-          ctx.arc(node.x, node.y, node.currentRadius + 2, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(1, 103, 66, ${0.2 * layerProgress})`;
+          ctx.arc(node.x, node.y, node.currentRadius + 3, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(1, 103, 66, ${0.15 * layerProgress})`;
           ctx.lineWidth = 2;
           ctx.stroke();
         }
@@ -138,13 +161,13 @@ export default function NeuralNetworkBackground() {
         const fromNode = nodesRef.current[conn.from];
         const toNode = nodesRef.current[conn.to];
         
-        const connectionLayer = Math.max(fromNode.layer, toNode.layer);
-        const layerDelay = connectionLayer / totalLayers;
-        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2.5));
+        const xProgress = Math.min(fromNode.x, toNode.x) / canvasWidth;
+        const layerDelay = xProgress * 0.7;
+        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2));
         conn.opacity = conn.targetOpacity * layerProgress;
 
         if (conn.opacity > 0.01) {
-          const drawProgress = Math.max(0, Math.min(1, (progress - fromNode.layer / totalLayers) * 3));
+          const drawProgress = Math.max(0, Math.min(1, (progress - (fromNode.x / canvasWidth) * 0.7) * 2.5));
           const endX = fromNode.x + (toNode.x - fromNode.x) * drawProgress;
           const endY = fromNode.y + (toNode.y - fromNode.y) * drawProgress;
           
@@ -152,7 +175,7 @@ export default function NeuralNetworkBackground() {
           ctx.moveTo(fromNode.x, fromNode.y);
           ctx.lineTo(endX, endY);
           ctx.strokeStyle = `rgba(1, 103, 66, ${conn.opacity})`;
-          ctx.lineWidth = 1;
+          ctx.lineWidth = 1.5;
           ctx.stroke();
         }
       });
