@@ -58,7 +58,7 @@ export default function NeuralNetworkBackground() {
     const initializeNetwork = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const layers = [3, 5, 7, 9, 7, 5, 3];
+      const layers = [5, 7, 9, 11, 9, 7, 5];
       const layerSpacing = (width - 40) / (layers.length - 1);
       
       nodesRef.current = [];
