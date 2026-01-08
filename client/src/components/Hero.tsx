@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import BinaryBackground from './BinaryBackground';
 
-const profileImage = '/attached_assets/Screenshot 2025-11-13 at 9.11.00 PM_1763097063110.png';
+const profileImage = '/attached_assets/Screenshot_2026-01-08_at_10.43.03_AM_1767897786990.png';
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState('');
@@ -98,7 +98,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="relative animate-float">
               <Avatar className="w-64 h-64 md:w-80 md:h-80 border-4 border-white/30 shadow-2xl shadow-black/50 rounded-none">
-                <AvatarImage src={profileImage} alt="Anya Von Diessl" />
+                <AvatarImage src={profileImage} alt="Anya Von Diessl" className="object-cover" />
                 <AvatarFallback className="text-6xl font-display bg-gray-800 text-white">AVD</AvatarFallback>
               </Avatar>
               <div className="absolute inset-0 bg-white/5 pointer-events-none" />
