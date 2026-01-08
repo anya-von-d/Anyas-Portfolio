@@ -71,7 +71,7 @@ export default function Coursework() {
                   {courses.map((course, index) => (
                     <Card
                       key={course}
-                      className={`p-3 hover-elevate active-elevate-2 cursor-default transition-all animate-fade-in bg-white/5 !border-[#1EDF84] ${
+                      className={`p-3 hover-elevate active-elevate-2 cursor-default transition-all animate-fade-in bg-white/5 !border-[#016742] ${
                         hoveredIndex === index ? 'scale-105' : ''
                       }`}
                       style={{ animationDelay: `${index * 50}ms` }}
@@ -79,7 +79,7 @@ export default function Coursework() {
                       onMouseLeave={() => setHoveredIndex(null)}
                       data-testid={`card-course-${index}`}
                     >
-                      <p className="font-mono text-xs leading-relaxed text-[#35B276]">{course}</p>
+                      <p className="font-mono text-xs leading-relaxed text-[#016742]">{course}</p>
                     </Card>
                   ))}
                 </div>
