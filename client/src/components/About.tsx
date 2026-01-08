@@ -63,17 +63,37 @@ export default function About() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             {focuses.map((focus, index) => (
-              <Card
+              <div
                 key={focus.title}
-                className="p-6 hover-elevate active-elevate-2 transition-all cursor-default animate-fade-in bg-white/20 border-white/40"
+                className="animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
                 data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
-                <h3 className="font-display font-bold text-xl mb-2 text-[#1A1A1A]">{focus.title}</h3>
-                <p className="text-[#1A1A1A]/80 leading-relaxed">{focus.description}</p>
-              </Card>
+                <div className="bg-[#C9C2B5] rounded-lg p-3 shadow-lg hover-elevate active-elevate-2 transition-all cursor-default">
+                  <div className="bg-[#1A1A1A] rounded p-4 min-h-[140px] border-4 border-[#2A2A2A] shadow-inner">
+                    <h3 className="font-mono font-bold text-lg mb-2 text-primary">&gt; {focus.title}</h3>
+                    <p className="text-[#98C379] font-mono text-sm leading-relaxed">{focus.description}</p>
+                    <span className="inline-block w-2 h-4 bg-primary animate-pulse mt-2" />
+                  </div>
+                  <div className="flex justify-center mt-3">
+                    <div className="w-8 h-1 bg-[#A8A095] rounded-full" />
+                  </div>
+                  <div className="flex justify-center mt-2">
+                    <div className="flex gap-2">
+                      <div className="w-2 h-2 rounded-full bg-[#8B8578]" />
+                      <div className="w-2 h-2 rounded-full bg-[#8B8578]" />
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-center">
+                  <div className="w-16 h-6 bg-gradient-to-b from-[#C9C2B5] to-[#B8B1A4] rounded-b-sm" />
+                </div>
+                <div className="flex justify-center">
+                  <div className="w-24 h-2 bg-[#A8A095] rounded-b-lg shadow-md" />
+                </div>
+              </div>
             ))}
           </div>
         </div>
