@@ -1,4 +1,3 @@
-import ParticleBackground from '@/components/ParticleBackground';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
@@ -11,7 +10,6 @@ import { Button } from '@/components/ui/button';
 export default function Home() {
   return (
     <div className="relative">
-      <ParticleBackground />
       <Navigation />
       <main>
         <div className="relative bg-[#0A0A0A]">
