@@ -1,5 +1,5 @@
 import { Card } from '@/components/ui/card';
-import stanfordLogo from '@assets/vondy-2_1767893265643.png';
+import stanfordLogo from '@assets/vondy-3_1767893482214.png';
 
 const education = [
   {
