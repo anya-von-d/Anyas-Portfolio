@@ -3,8 +3,7 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { Mail, Linkedin, Download } from 'lucide-react';
 import BinaryBackground from './BinaryBackground';
-
-const profileImage = '/attached_assets/Screenshot_2026-01-08_at_10.44.47_AM_1767898127121.png';
+import profileImage from '@assets/Screenshot_2026-01-08_at_10.44.47_AM_1767898127121.png';
 
 export default function Hero() {
   const [displayedText, setDisplayedText] = useState('');
