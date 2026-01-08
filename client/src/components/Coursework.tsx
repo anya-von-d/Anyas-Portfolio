@@ -96,7 +96,7 @@ export default function Coursework() {
                     <Badge
                       key={skill}
                       variant="outline"
-                      className="font-mono px-3 py-1.5 text-xs !border-white text-white hover:bg-primary hover:text-primary-foreground transition-all cursor-default animate-fade-in"
+                      className="font-mono px-3 py-1.5 text-xs !border-[#33FF33] text-[#33FF33] hover:bg-[#33FF33]/20 transition-all cursor-default animate-fade-in"
                       style={{ animationDelay: `${index * 50}ms` }}
                       data-testid={`badge-tech-${skill.toLowerCase().replace(/\s+/g, '-')}`}
                     >
@@ -105,16 +105,6 @@ export default function Coursework() {
                   ))}
                 </div>
 
-                <Card className="mt-6 p-4 border-primary/30 bg-white/5">
-                  <p className="text-white/70 leading-relaxed text-sm">
-                    <span className="font-display font-semibold text-[#33FF33] block mb-2">
-                      Specialized Expertise
-                    </span>
-                    Strong foundation in mathematics and computer science with hands-on experience in building
-                    production-quality software systems, conducting cutting-edge AI research, and applying
-                    advanced machine learning techniques to solve real-world problems in healthcare and beyond.
-                  </p>
-                </Card>
               </div>
             </div>
           </div>
