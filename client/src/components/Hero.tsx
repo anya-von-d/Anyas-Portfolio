@@ -32,10 +32,33 @@ export default function Hero() {
     };
   }, []);
 
+  const smoothScrollTo = (targetY: number, duration: number = 1200) => {
+    const startY = window.scrollY;
+    const difference = targetY - startY;
+    const startTime = performance.now();
+
+    const easeInOutCubic = (t: number) => {
+      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    };
+
+    const animateScroll = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const easeProgress = easeInOutCubic(progress);
+      window.scrollTo(0, startY + difference * easeProgress);
+      if (progress < 1) {
+        requestAnimationFrame(animateScroll);
+      }
+    };
+
+    requestAnimationFrame(animateScroll);
+  };
+
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      smoothScrollTo(targetY);
     }
   };
 
@@ -46,7 +69,7 @@ export default function Hero() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h1 className="font-display font-bold text-5xl md:text-7xl tracking-tight text-white" data-testid="text-name">
-              Anya Von Diessl
+              Anya von Diessl
             </h1>
 
             <div className="h-12">
@@ -98,7 +121,7 @@ export default function Hero() {
           <div className="flex justify-center md:justify-end">
             <div className="relative animate-float">
               <Avatar className="w-64 h-64 md:w-80 md:h-80 border-4 border-white/30 shadow-2xl shadow-black/50 rounded-none">
-                <AvatarImage src={profileImage} alt="Anya Von Diessl" className="object-cover" />
+                <AvatarImage src={profileImage} alt="Anya von Diessl" className="object-cover" />
                 <AvatarFallback className="text-6xl font-display bg-gray-800 text-white">AVD</AvatarFallback>
               </Avatar>
               <div className="absolute inset-0 bg-white/5 pointer-events-none" />

@@ -29,7 +29,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="md:col-span-2">
-              <h3 className="font-display text-2xl font-bold mb-4 text-white">Anya Von Diessl</h3>
+              <h3 className="font-display text-2xl font-bold mb-4 text-white">Anya von Diessl</h3>
               <p className="text-white/70 leading-relaxed mb-6">
                 Graduate student at Stanford University pursuing AI research with a focus on medical imaging and precision healthcare.
               </p>
@@ -71,7 +71,7 @@ export default function Home() {
           
           <div className="pt-8 border-t border-white/10 text-center">
             <p className="text-white/50 font-mono text-sm">
-              © 2025 Anya Von Diessl. All rights reserved.
+              © 2025 Anya von Diessl. All rights reserved.
             </p>
           </div>
         </div>
