@@ -109,31 +109,16 @@ export default function NeuralNetworkBackground() {
       ctx.clearRect(0, 0, canvas.offsetWidth, canvas.offsetHeight);
 
       if (isVisible && progressRef.current < 1) {
-        progressRef.current += 0.02;
+        progressRef.current += 0.008;
       }
 
       const progress = progressRef.current;
-
-      connectionsRef.current.forEach((conn) => {
-        const fromNode = nodesRef.current[conn.from];
-        const toNode = nodesRef.current[conn.to];
-        
-        const layerProgress = Math.min(1, progress * 2 - fromNode.layer * 0.2);
-        conn.opacity = conn.targetOpacity * Math.max(0, layerProgress);
-
-        if (conn.opacity > 0.01) {
-          ctx.beginPath();
-          ctx.moveTo(fromNode.x, fromNode.y);
-          ctx.lineTo(toNode.x, toNode.y);
-          ctx.strokeStyle = `rgba(51, 255, 51, ${conn.opacity})`;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        }
-      });
+      const totalLayers = 5;
 
       nodesRef.current.forEach((node) => {
-        const layerProgress = Math.min(1, progress * 2 - node.layer * 0.2);
-        node.currentRadius = node.targetRadius * Math.max(0, layerProgress);
+        const layerDelay = node.layer / totalLayers;
+        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2.5));
+        node.currentRadius = node.targetRadius * layerProgress;
 
         if (node.currentRadius > 0.1) {
           ctx.beginPath();
@@ -145,6 +130,29 @@ export default function NeuralNetworkBackground() {
           ctx.arc(node.x, node.y, node.currentRadius + 2, 0, Math.PI * 2);
           ctx.strokeStyle = `rgba(51, 255, 51, ${0.2 * layerProgress})`;
           ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      });
+
+      connectionsRef.current.forEach((conn) => {
+        const fromNode = nodesRef.current[conn.from];
+        const toNode = nodesRef.current[conn.to];
+        
+        const connectionLayer = Math.max(fromNode.layer, toNode.layer);
+        const layerDelay = connectionLayer / totalLayers;
+        const layerProgress = Math.max(0, Math.min(1, (progress - layerDelay) * 2.5));
+        conn.opacity = conn.targetOpacity * layerProgress;
+
+        if (conn.opacity > 0.01) {
+          const drawProgress = Math.max(0, Math.min(1, (progress - fromNode.layer / totalLayers) * 3));
+          const endX = fromNode.x + (toNode.x - fromNode.x) * drawProgress;
+          const endY = fromNode.y + (toNode.y - fromNode.y) * drawProgress;
+          
+          ctx.beginPath();
+          ctx.moveTo(fromNode.x, fromNode.y);
+          ctx.lineTo(endX, endY);
+          ctx.strokeStyle = `rgba(51, 255, 51, ${conn.opacity})`;
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
       });
