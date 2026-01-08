@@ -15,17 +15,17 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-16 px-6 bg-[#35B276]" data-testid="section-about">
+    <section id="about" className="relative py-16 px-6 bg-[#33FF33]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
-            <span className="text-[#006B3D]">&lt;</span><span className="text-white">About</span><span className="text-[#006B3D]">/&gt;</span>
+            <span className="text-[#0A1408]">&lt;</span><span className="text-[#0A1408]">About</span><span className="text-[#0A1408]">/&gt;</span>
           </h2>
         </div>
         
         <div>
           <div className="mb-12 max-w-3xl mx-auto text-center">
-            <p className="text-lg leading-relaxed text-[#1A1A1A]">
+            <p className="text-lg leading-relaxed text-[#0A1408]">
               Graduate student at Stanford pursuing a Master's in Computer Science (AI Track). With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing.
             </p>
           </div>
@@ -39,10 +39,10 @@ export default function About() {
                 data-testid={`card-focus-${focus.title.toLowerCase().replace(/\s+/g, '-')}`}
               >
                 <div className="bg-[#D4CBA8] rounded-lg p-3 shadow-lg hover-elevate active-elevate-2 transition-all cursor-default">
-                  <div className="bg-[#0A1408] rounded p-4 min-h-[140px] border-4 border-[#2A2A2A] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]">
+                  <div className="bg-[#0A1408] rounded p-4 h-[160px] border-4 border-[#2A2A2A] shadow-[inset_0_0_20px_rgba(0,0,0,0.8)] flex flex-col">
                     <h3 className="font-mono font-bold text-sm mb-2 text-[#33FF33]">&gt; {focus.title}</h3>
-                    <p className="text-[#22BB22] font-mono text-xs leading-relaxed">{focus.description}</p>
-                    <span className="inline-block w-2 h-3 bg-[#33FF33] animate-pulse mt-2" />
+                    <p className="text-[#22BB22] font-mono text-xs leading-relaxed flex-1">{focus.description}</p>
+                    <span className="inline-block w-2 h-3 bg-[#33FF33] animate-pulse" />
                   </div>
                   <div className="mt-2 flex justify-end">
                     <div className="w-2 h-2 rounded-full bg-[#2A2A2A]">
