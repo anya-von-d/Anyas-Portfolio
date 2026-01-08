@@ -15,11 +15,11 @@ const focuses = [
 
 export default function About() {
   return (
-    <section id="about" className="relative py-16 px-6 bg-[#016742]" data-testid="section-about">
+    <section id="about" className="relative py-16 px-6 bg-[#2A2A2A]" data-testid="section-about">
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
-            <span className="text-black">&lt;</span><span className="text-white">About</span><span className="text-black">/&gt;</span>
+            <span className="text-[#33FF33]">&lt;</span><span className="text-white">About</span><span className="text-[#33FF33]">/&gt;</span>
           </h2>
         </div>
         
