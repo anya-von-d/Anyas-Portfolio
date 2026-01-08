@@ -58,8 +58,8 @@ export default function NeuralNetworkBackground() {
     const initializeNetwork = () => {
       const width = canvas.offsetWidth;
       const height = canvas.offsetHeight;
-      const numNodes = 50;
-      const minGap = 60;
+      const numNodes = 120;
+      const minGap = 40;
       
       nodesRef.current = [];
       connectionsRef.current = [];
@@ -101,7 +101,7 @@ export default function NeuralNetworkBackground() {
             x,
             y,
             layer,
-            targetRadius: 6 + seededRandom(seed + i) * 6,
+            targetRadius: 4 + seededRandom(seed + i) * 4,
             currentRadius: 0,
           });
         }
@@ -113,7 +113,7 @@ export default function NeuralNetworkBackground() {
           const nodeB = nodesRef.current[j];
           const dist = Math.sqrt((nodeA.x - nodeB.x) ** 2 + (nodeA.y - nodeB.y) ** 2);
           
-          if (dist < 200 && nodeB.x > nodeA.x && seededRandom(seed + i * j) > 0.5) {
+          if (dist < 150 && seededRandom(seed + i * j) > 0.3) {
             connectionsRef.current.push({
               from: i,
               to: j,
