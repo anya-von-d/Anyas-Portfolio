@@ -33,6 +33,15 @@ const experiences = [
     tags: ['AI', 'Game Theory', 'Teaching', 'Automated Reasoning'],
   },
   {
+    title: 'Quantitative Strategy Researcher',
+    organization: 'Stanford University',
+    location: 'Stanford, CA',
+    period: 'January 2024 - March 2024',
+    description:
+      'Researched quantitative trading as an applied problem in statistical signal extraction, constrained optimization, and dynamic execution. The work explores factor-based alpha modeling, noise-robust inference from financial time series, portfolio construction under leverage and risk constraints, and execution strategies accounting for market impact, all within non-stationary and regime-dependent market environments.',
+    tags: ['Quantitative Finance', 'Statistical Modeling', 'Optimization', 'Time Series'],
+  },
+  {
     title: 'Machine Learning Researcher',
     organization: 'Stanford Computer Science Department',
     location: 'Stanford, CA',
