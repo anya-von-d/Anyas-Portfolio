@@ -48,7 +48,7 @@ export default function Coursework() {
       <div className="relative max-w-5xl mx-auto z-10">
         <div className="mb-8 text-center">
           <h2 className="font-mono text-3xl md:text-4xl text-black" data-testid="heading-coursework">
-            <span className="text-[#016742]">&lt;</span>Background & Skills<span className="text-[#016742]">/&gt;</span>
+            <span className="text-[#016742]">&lt;</span>Background<span className="text-[#016742]">/&gt;</span>
           </h2>
         </div>
 
