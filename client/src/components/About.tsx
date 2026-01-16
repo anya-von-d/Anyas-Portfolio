@@ -19,7 +19,7 @@ export default function About() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-16 text-center">
           <h2 className="font-mono text-3xl md:text-4xl mb-4" data-testid="heading-about">
-            <span className="text-[#33FF33]">&lt;</span><span className="text-black">About</span><span className="text-[#33FF33]">/&gt;</span>
+            <span className="text-[#016742]">&lt;</span><span className="text-black">About</span><span className="text-[#016742]">/&gt;</span>
           </h2>
         </div>
         
