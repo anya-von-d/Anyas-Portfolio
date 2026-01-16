@@ -14,7 +14,7 @@ const education = [
     abbreviation: 'BS',
     degree: 'Bachelor of Science, Mathematics',
     school: 'Stanford University, Stanford, CA',
-    date: 'September 2021 - 2025',
+    date: '2021 - 2025',
     current: false,
   },
 ];
