@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { motion, useScroll } from 'framer-motion';
+import { motion, AnimatePresence, useScroll } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
@@ -12,8 +12,8 @@ const navItems = [
 
 export default function Navigation() {
   const [isOverHero, setIsOverHero] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
-  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const { scrollYProgress } = useScroll();
 
   useEffect(() => {
@@ -45,88 +45,157 @@ export default function Navigation() {
     return () => observers.forEach(o => o.disconnect());
   }, []);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [isMenuOpen]);
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const target = document.querySelector(href);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileOpen(false);
-    }
+    setIsMenuOpen(false);
+    // Small delay to let the menu close animation start before scrolling
+    setTimeout(() => {
+      const target = document.querySelector(href);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
   };
-
-  const textColor = isOverHero ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]';
-  const textMuted = isOverHero ? 'text-[#8888A0]' : 'text-[#555566]';
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-50 h-16 flex items-center transition-all duration-300 ${
-        isOverHero
-          ? 'bg-transparent'
-          : 'bg-[#FAFAFA]/90 backdrop-blur-md border-b border-[#E0E0E8]'
-      }`}>
-        <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12 lg:px-16 flex items-center justify-between">
+      {/* Navigation bar — solid rectangle, always visible */}
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 h-14 flex items-center transition-colors duration-300 ${
+          isOverHero && !isMenuOpen
+            ? 'bg-[#0A0A0F] border-b border-[#1a1a2e]'
+            : 'bg-[#FAFAFA] border-b border-[#E0E0E8]'
+        }`}
+      >
+        <div className="w-full px-6 md:px-10 flex items-center justify-between">
+          {/* Logo / Name */}
           <a
             href="#hero"
-            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-            className={`font-medium text-sm tracking-wide transition-colors duration-300 ${textColor}`}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className={`font-serif text-xl tracking-tight transition-colors duration-300 ${
+              isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
+            }`}
           >
-            Anya von Diessl
+            AVD
           </a>
 
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map(item => {
-              const sectionId = item.href.replace('#', '');
-              const isActive = activeSection === sectionId;
-              return (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className={`text-sm transition-colors duration-200 ${
-                    isActive
-                      ? 'text-[#0066FF]'
-                      : `${textMuted} hover:${isOverHero ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'}`
-                  }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </div>
-
+          {/* Hamburger button */}
           <button
-            className={`md:hidden transition-colors ${textColor}`}
-            onClick={() => setIsMobileOpen(!isMobileOpen)}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className={`relative w-8 h-8 flex items-center justify-center transition-colors duration-300 ${
+              isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
+            }`}
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+            <AnimatePresence mode="wait">
+              {isMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ opacity: 0, rotate: -90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: 90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X size={22} strokeWidth={1.5} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ opacity: 0, rotate: 90 }}
+                  animate={{ opacity: 1, rotate: 0 }}
+                  exit={{ opacity: 0, rotate: -90 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu size={22} strokeWidth={1.5} />
+                </motion.div>
+              )}
+            </AnimatePresence>
           </button>
         </div>
 
+        {/* Scroll progress bar */}
         <motion.div
           className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0066FF] origin-left"
           style={{ scaleX: scrollYProgress }}
         />
       </nav>
 
-      {isMobileOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-40 bg-[#FAFAFA] flex flex-col items-center justify-center gap-8 pt-16"
-        >
-          {navItems.map(item => (
-            <a
-              key={item.href}
-              href={item.href}
-              onClick={(e) => handleNavClick(e, item.href)}
-              className="text-2xl text-[#0A0A0A] hover:text-[#0066FF] transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-        </motion.div>
-      )}
+      {/* Full-screen overlay menu */}
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-[#FAFAFA]"
+          >
+            {/* Menu content — centered navigation links */}
+            <div className="flex flex-col items-center justify-center h-full pt-14">
+              <nav className="flex flex-col items-center gap-2">
+                {navItems.map((item, index) => {
+                  const sectionId = item.href.replace('#', '');
+                  const isActive = activeSection === sectionId;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: index * 0.06,
+                        ease: [0.25, 0.46, 0.45, 0.94],
+                      }}
+                    >
+                      <a
+                        href={item.href}
+                        onClick={(e) => handleNavClick(e, item.href)}
+                        className={`block font-serif text-5xl md:text-6xl lg:text-7xl py-2 transition-colors duration-200 ${
+                          isActive
+                            ? 'text-[#0066FF]'
+                            : 'text-[#0A0A0A] hover:text-[#0066FF]'
+                        }`}
+                      >
+                        {item.label}
+                      </a>
+                    </motion.div>
+                  );
+                })}
+              </nav>
+
+              {/* Bottom info in overlay */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }}
+                className="absolute bottom-10 left-0 right-0 flex justify-between items-end px-6 md:px-10"
+              >
+                <p className="font-mono text-[11px] text-[#888899] uppercase tracking-[0.06em]">
+                  Anya von Diessl
+                </p>
+                <p className="font-mono text-[11px] text-[#888899] uppercase tracking-[0.06em]">
+                  Stanford CS &middot; AI
+                </p>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
