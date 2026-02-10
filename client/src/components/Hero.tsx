@@ -20,11 +20,11 @@ const skills = [
   "Deep Learning",
   "Computer Vision",
   "Bayesian Inference",
-  "Monte Carlo Simulation",
+  "Monte Carlo",
   "Numerical Methods",
   "Parallel Programming",
   "Web Development",
-  "High-Performance Computing",
+  "HPC",
 ];
 
 export default function Hero() {
@@ -36,7 +36,6 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
 
-  // Parallax: content fades and shifts up as user scrolls past
   const contentOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
   const contentY = useTransform(scrollYProgress, [0, 0.6], [0, -80]);
 
@@ -54,24 +53,49 @@ export default function Hero() {
     }
   };
 
-  // Double the skills array for seamless loop
   const marqueeSkills = [...skills, ...skills];
 
   return (
     <section
       id="hero"
       ref={sectionRef}
-      className="h-screen bg-[#0A0A0F] relative overflow-hidden flex flex-col"
+      className="h-screen bg-[#0A0A0F] relative overflow-hidden"
     >
       {/* Background code waterfall */}
       <CodeWaterfall intensity="light" />
 
-      {/* Main content area — takes up all space above the ticker */}
+      {/* ── Skills marquee — sits BEHIND the photo (z-20) ── */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.2 }}
+        className="absolute bottom-[15%] md:bottom-[18%] left-0 right-0 z-20 pointer-events-none"
+      >
+        <div className="overflow-hidden">
+          <div className="animate-marquee flex whitespace-nowrap">
+            {marqueeSkills.map((skill, i) => (
+              <span
+                key={`${skill}-${i}`}
+                className="inline-flex items-center mx-3 md:mx-5"
+              >
+                <span className="font-mono text-2xl md:text-4xl lg:text-5xl font-bold text-[#1a1a2e] uppercase tracking-wider">
+                  {skill}
+                </span>
+                <span className="ml-3 md:ml-5 text-[#1a1a2e] text-2xl md:text-4xl lg:text-5xl font-bold">
+                  /
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* ── All content — layered above the marquee ── */}
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 flex-1 flex flex-col items-center justify-center px-6 md:px-12 pt-14"
+        className="relative z-30 h-full flex flex-col items-center justify-center px-6 md:px-12 pt-14"
       >
-        {/* Name — large, above photo */}
+        {/* Name — above photo */}
         <motion.h1
           initial={{ opacity: 0, y: 20, letterSpacing: "0.08em" }}
           animate={{ opacity: 1, y: 0 }}
@@ -103,22 +127,18 @@ export default function Hero() {
             </p>
           </motion.div>
 
-          {/* Center — Profile photo */}
+          {/* Center — Profile photo (sits ON TOP of marquee) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="shrink-0"
+            className="shrink-0 relative z-40"
           >
-            <div className="relative">
-              <img
-                src={profileImage}
-                alt="Anya von Diessl"
-                className="w-52 h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover rounded-2xl"
-              />
-              {/* Subtle border */}
-              <div className="absolute inset-0 rounded-2xl border border-[#ffffff08]" />
-            </div>
+            <img
+              src={profileImage}
+              alt="Anya von Diessl"
+              className="w-52 h-52 md:w-60 md:h-60 lg:w-72 lg:h-72 xl:w-80 xl:h-80 object-cover rounded-2xl"
+            />
           </motion.div>
 
           {/* Right — Stanford MS Computer Science */}
@@ -183,30 +203,6 @@ export default function Hero() {
             <ArrowUpRight size={14} />
           </a>
         </motion.div>
-      </motion.div>
-
-      {/* Skills marquee ticker — pinned to bottom of hero */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.2 }}
-        className="relative z-10 border-t border-[#1a1a2e] bg-[#0A0A0F]/80 backdrop-blur-sm"
-      >
-        <div className="overflow-hidden py-4">
-          <div className="animate-marquee flex whitespace-nowrap">
-            {marqueeSkills.map((skill, i) => (
-              <span
-                key={`${skill}-${i}`}
-                className="inline-flex items-center mx-4 md:mx-6"
-              >
-                <span className="font-mono text-xs md:text-sm text-[#8888A0] tracking-wide uppercase">
-                  {skill}
-                </span>
-                <span className="ml-4 md:ml-6 text-[#333344]">&mdash;</span>
-              </span>
-            ))}
-          </div>
-        </div>
       </motion.div>
     </section>
   );
