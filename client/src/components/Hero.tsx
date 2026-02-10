@@ -66,13 +66,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-serif text-[13vw] md:text-[10vw] lg:text-[9vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight"
+            className="font-serif text-[8vw] md:text-[7vw] lg:text-[6.5vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight whitespace-nowrap"
           >
-            <span className="block">
-              Anya{" "}
-              <span className="italic text-[#0066FF]">von</span>
-            </span>
-            <span className="block">Diessl.</span>
+            Anya{" "}
+            <span className="italic text-[#0066FF]">von</span>{" "}
+            Diessl.
           </motion.h1>
         </div>
 
@@ -81,7 +79,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-[25%] md:bottom-[28%] left-0 right-0 z-20 pointer-events-none"
+          className="absolute bottom-[8%] md:bottom-[10%] left-0 right-0 z-20 pointer-events-none"
         >
           <div className="overflow-hidden">
             <div className="animate-marquee flex whitespace-nowrap">
@@ -90,7 +88,7 @@ export default function Hero() {
                   key={`${skill}-${i}`}
                   className="inline-flex items-center mx-4 md:mx-6"
                 >
-                  <span className="font-mono text-lg md:text-2xl lg:text-3xl text-[#0066FF] uppercase tracking-[0.15em] font-semibold">
+                  <span className="font-mono text-[10px] md:text-xs lg:text-sm text-[#0066FF] uppercase tracking-[0.2em]">
                     {skill}
                   </span>
                 </span>
