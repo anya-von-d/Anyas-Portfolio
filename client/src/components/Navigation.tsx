@@ -77,54 +77,61 @@ export default function Navigation() {
             : 'bg-[#FAFAFA] border-b border-[#E0E0E8]'
         }`}
       >
-        <div className="w-full px-6 md:px-10 flex items-center justify-between">
-          {/* Logo / Name */}
-          <a
-            href="#hero"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsMenuOpen(false);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }}
-            className={`font-serif text-xl tracking-tight transition-colors duration-300 ${
-              isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
-            }`}
-          >
-            AVD
-          </a>
+        <div className="w-full px-6 md:px-10 grid grid-cols-3 items-center">
+          {/* Left — empty spacer for symmetry */}
+          <div />
 
-          {/* Hamburger button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={`relative w-8 h-8 flex items-center justify-center transition-colors duration-300 ${
-              isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
-            }`}
-            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          >
-            <AnimatePresence mode="wait">
-              {isMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: 90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X size={22} strokeWidth={1.5} />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ opacity: 0, rotate: 90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  exit={{ opacity: 0, rotate: -90 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu size={22} strokeWidth={1.5} />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </button>
+          {/* Center — Logo */}
+          <div className="flex justify-center">
+            <a
+              href="#hero"
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMenuOpen(false);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`font-serif text-xl tracking-tight transition-colors duration-300 ${
+                isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
+              }`}
+            >
+              AVD
+            </a>
+          </div>
+
+          {/* Right — Hamburger button */}
+          <div className="flex justify-end">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className={`relative w-8 h-8 flex items-center justify-center transition-colors duration-300 ${
+                isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
+              }`}
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+            >
+              <AnimatePresence mode="wait">
+                {isMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ opacity: 0, rotate: -90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: 90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X size={22} strokeWidth={1.5} />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ opacity: 0, rotate: 90 }}
+                    animate={{ opacity: 1, rotate: 0 }}
+                    exit={{ opacity: 0, rotate: -90 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu size={22} strokeWidth={1.5} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
         </div>
 
         {/* Scroll progress bar */}
