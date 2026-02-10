@@ -34,7 +34,7 @@ export default function Education() {
             <img
               src={msLogo}
               alt="Stanford Engineering"
-              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain rounded-2xl"
+              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain"
             />
           </motion.div>
 
@@ -49,7 +49,7 @@ export default function Education() {
               <img
                 src={msLogo}
                 alt="Stanford Engineering"
-                className="md:hidden w-16 h-16 object-contain rounded-xl mx-auto mb-4"
+                className="md:hidden w-16 h-16 object-contain mx-auto mb-4"
               />
               <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
                 Master&apos;s Degree
@@ -83,7 +83,7 @@ export default function Education() {
               <img
                 src={bsLogo}
                 alt="Stanford University"
-                className="md:hidden w-16 h-16 object-contain rounded-xl mx-auto mb-4"
+                className="md:hidden w-16 h-16 object-contain mx-auto mb-4"
               />
               <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
                 Bachelor&apos;s Degree
@@ -108,7 +108,7 @@ export default function Education() {
             <img
               src={bsLogo}
               alt="Stanford University"
-              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain rounded-2xl"
+              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain"
             />
           </motion.div>
         </div>

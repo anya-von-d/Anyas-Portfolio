@@ -58,7 +58,7 @@ export default function Hero() {
 
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
-        className="relative z-10 h-full flex flex-col"
+        className="relative z-10 h-full"
       >
         {/* ── Giant name — sits BEHIND the photo ── */}
         <div className="absolute inset-x-0 top-[8%] md:top-[10%] z-10 text-center px-4">
@@ -76,7 +76,30 @@ export default function Hero() {
           </motion.h1>
         </div>
 
-        {/* ── Photo — large, centered, overlapping the text ── */}
+        {/* ── Skills marquee — behind the photo (z-20) ── */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+          className="absolute bottom-[25%] md:bottom-[28%] left-0 right-0 z-20 pointer-events-none"
+        >
+          <div className="overflow-hidden">
+            <div className="animate-marquee flex whitespace-nowrap">
+              {marqueeSkills.map((skill, i) => (
+                <span
+                  key={`${skill}-${i}`}
+                  className="inline-flex items-center mx-4 md:mx-6"
+                >
+                  <span className="font-mono text-lg md:text-2xl lg:text-3xl text-[#0066FF] uppercase tracking-[0.15em] font-semibold">
+                    {skill}
+                  </span>
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {/* ── Photo — large, centered, overlapping text & skills ── */}
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -86,72 +109,83 @@ export default function Hero() {
           <img
             src={profileImage}
             alt="Anya von Diessl"
-            className="w-[55vw] max-w-[380px] md:w-[35vw] md:max-w-[440px] lg:w-[28vw] lg:max-w-[480px] xl:max-w-[520px] object-cover rounded-2xl"
+            className="w-[55vw] max-w-[380px] md:w-[35vw] md:max-w-[440px] lg:w-[28vw] lg:max-w-[480px] xl:max-w-[520px] object-cover"
           />
         </motion.div>
 
-        {/* ── Left side — Role & Education (centered vertically) ── */}
+        {/* ── Left side — Role & Education ──
+             Uses left-0 to the center photo zone as its space.
+             The photo is ~28-35vw wide centered, so the side panel
+             occupies from the screen edge to roughly where the photo starts.
+             We use left-0 w-[36%] (on lg) with flex justify-center to
+             center the content within that left column. */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="absolute left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center text-center gap-1"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex w-[30%] lg:w-[34%] justify-center"
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
-            Role
-          </p>
-          <p className="font-sans text-sm lg:text-base text-[#F0F0F5] font-semibold leading-relaxed">
-            AI Researcher
-          </p>
-          <p className="font-sans text-sm lg:text-base text-[#8888A0] leading-relaxed">
-            &amp; Computer Scientist
-          </p>
-          <div className="mt-6">
+          <div className="flex flex-col items-center text-center gap-1">
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
-              Education
+              Role
             </p>
             <p className="font-sans text-sm lg:text-base text-[#F0F0F5] font-semibold leading-relaxed">
-              Stanford University
+              AI Researcher
             </p>
             <p className="font-sans text-sm lg:text-base text-[#8888A0] leading-relaxed">
-              MS Computer Science
+              &amp; Computer Scientist
             </p>
+            <div className="mt-6">
+              <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
+                Education
+              </p>
+              <p className="font-sans text-sm lg:text-base text-[#F0F0F5] font-semibold leading-relaxed">
+                Stanford University
+              </p>
+              <p className="font-sans text-sm lg:text-base text-[#8888A0] leading-relaxed">
+                MS Computer Science
+              </p>
+            </div>
           </div>
         </motion.div>
 
-        {/* ── Right side — Social / Contact (centered vertically) ── */}
+        {/* ── Right side — Social / Contact ──
+             Mirror of the left side, occupying from the photo zone to
+             the right edge of the screen. */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="absolute right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center text-center gap-1"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-40 hidden md:flex w-[30%] lg:w-[34%] justify-center"
         >
-          <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
-            Connect
-          </p>
-          <a
-            href="https://www.linkedin.com/in/anya-von-diessl/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-sm lg:text-base text-[#F0F0F5] font-semibold hover:text-[#0066FF] transition-colors flex items-center gap-1"
-          >
-            LinkedIn <ArrowUpRight size={13} />
-          </a>
-          <a
-            href="https://github.com/anyavondiessl"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-sans text-sm lg:text-base text-[#8888A0] hover:text-[#0066FF] transition-colors flex items-center gap-1"
-          >
-            GitHub <ArrowUpRight size={13} />
-          </a>
-          <div className="mt-6">
-            <button
-              onClick={scrollToContact}
-              className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-5 py-2 rounded-lg font-medium text-sm transition-colors cursor-pointer"
+          <div className="flex flex-col items-center text-center gap-1">
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
+              Connect
+            </p>
+            <a
+              href="https://www.linkedin.com/in/anya-von-diessl/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-sm lg:text-base text-[#F0F0F5] font-semibold hover:text-[#0066FF] transition-colors flex items-center gap-1"
             >
-              Contact Me
-            </button>
+              LinkedIn <ArrowUpRight size={13} />
+            </a>
+            <a
+              href="https://github.com/anyavondiessl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-sans text-sm lg:text-base text-[#8888A0] hover:text-[#0066FF] transition-colors flex items-center gap-1"
+            >
+              GitHub <ArrowUpRight size={13} />
+            </a>
+            <div className="mt-6">
+              <button
+                onClick={scrollToContact}
+                className="bg-[#0066FF] hover:bg-[#0052CC] text-white px-5 py-2 rounded-lg font-medium text-sm transition-colors cursor-pointer"
+              >
+                Contact Me
+              </button>
+            </div>
           </div>
         </motion.div>
 
@@ -191,29 +225,6 @@ export default function Hero() {
             <p className="font-sans text-[11px] text-[#8888A0]">
               MS Computer Science
             </p>
-          </div>
-        </motion.div>
-
-        {/* ── Skills marquee — blue, no dots, behind the photo ── */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.2 }}
-          className="absolute bottom-[3%] md:bottom-[2%] left-0 right-0 z-20 pointer-events-none"
-        >
-          <div className="overflow-hidden">
-            <div className="animate-marquee flex whitespace-nowrap">
-              {marqueeSkills.map((skill, i) => (
-                <span
-                  key={`${skill}-${i}`}
-                  className="inline-flex items-center mx-4 md:mx-6"
-                >
-                  <span className="font-mono text-xs md:text-sm lg:text-base text-[#0066FF] uppercase tracking-[0.2em] font-medium">
-                    {skill}
-                  </span>
-                </span>
-              ))}
-            </div>
           </div>
         </motion.div>
       </motion.div>

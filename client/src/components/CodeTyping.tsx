@@ -3,7 +3,7 @@ import { useEffect, useRef, useState, memo } from "react";
 /**
  * Animated code-typing background for the hero section.
  * Multiple "terminals" type out code snippets at different speeds,
- * each with a blinking cursor. A heavy radial fade keeps it subtle.
+ * each with a blinking cursor. White/grey text with a radial fade.
  */
 
 const CODE_BLOCKS = [
@@ -173,6 +173,9 @@ const BLOCK_POSITIONS = [
   { top: "65%", right: "1%", width: "40%" },
 ];
 
+const TEXT_COLOR = "#9999AA";
+const CURSOR_COLOR = "#CCCCDD";
+
 interface TerminalProps {
   lines: string[];
   typingSpeed: number;
@@ -279,24 +282,24 @@ const Terminal = memo(function Terminal({
   return (
     <div className="font-mono text-[10px] md:text-[11px] leading-[1.6] select-none">
       {displayedLines.map((line, i) => (
-        <div key={i} className="whitespace-pre" style={{ color: "var(--code-green)" }}>
+        <div key={i} className="whitespace-pre" style={{ color: TEXT_COLOR }}>
           {line}
           {i === lastLineIdx && !isDeleting && (
             <span
               className="inline-block w-[6px] h-[13px] align-middle ml-[1px] -mt-[1px]"
               style={{
-                backgroundColor: showCursor ? "var(--code-green)" : "transparent",
+                backgroundColor: showCursor ? CURSOR_COLOR : "transparent",
               }}
             />
           )}
         </div>
       ))}
       {(displayedLines.length === 0 || isDeleting) && (
-        <div className="whitespace-pre" style={{ color: "var(--code-green)" }}>
+        <div className="whitespace-pre" style={{ color: TEXT_COLOR }}>
           <span
             className="inline-block w-[6px] h-[13px] align-middle"
             style={{
-              backgroundColor: showCursor ? "var(--code-green)" : "transparent",
+              backgroundColor: showCursor ? CURSOR_COLOR : "transparent",
             }}
           />
         </div>
@@ -317,11 +320,11 @@ export default function CodeTyping() {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
-      {/* Terminal blocks at various positions */}
+      {/* Terminal blocks at various positions — more visible */}
       {CODE_BLOCKS.map((block, i) => (
         <div
           key={i}
-          className="absolute opacity-[0.12]"
+          className="absolute opacity-[0.25]"
           style={{
             ...BLOCK_POSITIONS[i],
           }}
@@ -330,24 +333,24 @@ export default function CodeTyping() {
         </div>
       ))}
 
-      {/* Heavy radial fade — keeps the center clean for content */}
+      {/* Radial fade — keeps the center clean for content */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 55% at 50% 50%, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.7) 45%, rgba(10,10,15,0.15) 100%)",
+            "radial-gradient(ellipse 55% 50% at 50% 50%, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.6) 50%, rgba(10,10,15,0.1) 100%)",
         }}
       />
 
       {/* Top/bottom edge fade */}
       <div
-        className="absolute inset-x-0 top-0 h-24"
+        className="absolute inset-x-0 top-0 h-20"
         style={{
           background: "linear-gradient(to bottom, #0A0A0F 0%, transparent 100%)",
         }}
       />
       <div
-        className="absolute inset-x-0 bottom-0 h-24"
+        className="absolute inset-x-0 bottom-0 h-20"
         style={{
           background: "linear-gradient(to top, #0A0A0F 0%, transparent 100%)",
         }}
