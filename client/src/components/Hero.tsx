@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import CodeWaterfall from "@/components/CodeWaterfall";
+import CodeTyping from "@/components/CodeTyping";
 import profileImage from "@assets/Screenshot_2026-01-08_at_10.44.47_AM_1767898127121.png";
 
 const skills = [
@@ -53,29 +53,26 @@ export default function Hero() {
       ref={sectionRef}
       className="h-screen bg-[#0A0A0F] relative overflow-hidden"
     >
-      {/* Background code waterfall */}
-      <CodeWaterfall intensity="light" />
+      {/* Animated code typing background with cursor */}
+      <CodeTyping />
 
       <motion.div
         style={{ opacity: contentOpacity, y: contentY }}
         className="relative z-10 h-full flex flex-col"
       >
-        {/* ── Giant headline text — sits BEHIND the photo ── */}
+        {/* ── Giant name — sits BEHIND the photo ── */}
         <div className="absolute inset-x-0 top-[8%] md:top-[10%] z-10 text-center px-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-serif text-[12vw] md:text-[9vw] lg:text-[8vw] leading-[0.9] text-[#F0F0F5] uppercase tracking-tight"
+            className="font-serif text-[13vw] md:text-[10vw] lg:text-[9vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight"
           >
             <span className="block">
-              Exploring{" "}
-              <span className="italic text-[#0066FF]">the</span>
+              Anya{" "}
+              <span className="italic text-[#0066FF]">von</span>
             </span>
-            <span className="block">
-              Frontiers of{" "}
-              <span className="italic text-[#0066FF]">AI.</span>
-            </span>
+            <span className="block">Diessl.</span>
           </motion.h1>
         </div>
 
@@ -93,12 +90,12 @@ export default function Hero() {
           />
         </motion.div>
 
-        {/* ── Left side — Pages / Links ── */}
+        {/* ── Left side — Role & Education (centered vertically) ── */}
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="absolute left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-start gap-1"
+          className="absolute left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center text-center gap-1"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
             Role
@@ -122,12 +119,12 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* ── Right side — Social / Contact ── */}
+        {/* ── Right side — Social / Contact (centered vertically) ── */}
         <motion.div
           initial={{ opacity: 0, x: 30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.7, ease: "easeOut" }}
-          className="absolute right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-end gap-1"
+          className="absolute right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-40 hidden md:flex flex-col items-center text-center gap-1"
         >
           <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-[#555566] mb-3">
             Connect
@@ -197,7 +194,7 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        {/* ── Skills marquee — at the very bottom, behind the photo ── */}
+        {/* ── Skills marquee — blue, no dots, behind the photo ── */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -209,13 +206,10 @@ export default function Hero() {
               {marqueeSkills.map((skill, i) => (
                 <span
                   key={`${skill}-${i}`}
-                  className="inline-flex items-center mx-3 md:mx-5"
+                  className="inline-flex items-center mx-4 md:mx-6"
                 >
-                  <span className="font-mono text-xs md:text-sm lg:text-base text-[#333345] uppercase tracking-[0.2em]">
+                  <span className="font-mono text-xs md:text-sm lg:text-base text-[#0066FF] uppercase tracking-[0.2em] font-medium">
                     {skill}
-                  </span>
-                  <span className="ml-3 md:ml-5 text-[#333345] text-xs md:text-sm lg:text-base">
-                    ●
                   </span>
                 </span>
               ))}
