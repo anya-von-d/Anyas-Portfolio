@@ -1,5 +1,5 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CodeWaterfall from "@/components/CodeWaterfall";
 import ScrollHighlight from "@/components/ScrollHighlight";
@@ -87,10 +87,6 @@ const experiences = [
 
 export default function Experience() {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
-  const listRef = useRef<HTMLDivElement>(null);
-  const headerRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(listRef, { once: true, margin: "-100px" });
-  const headerInView = useInView(headerRef, { once: true, margin: "-50px" });
 
   const toggleExpand = (index: number) => {
     setExpandedIndex(expandedIndex === index ? null : index);
@@ -99,103 +95,93 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="bg-[#0A0A0F] py-20 md:py-28 relative overflow-hidden"
+      className="bg-[#0A0A0F] relative overflow-hidden"
     >
       <CodeWaterfall intensity="medium" />
 
-      <div className="max-w-[900px] mx-auto px-6 md:px-12 relative z-10">
-        {/* Header */}
-        <div ref={headerRef}>
-          <p
-            className="font-mono uppercase tracking-[0.08em] text-[#8888A0] mb-4"
-            style={{ fontSize: "11px" }}
-          >
-            EXPERIENCE
-          </p>
-          <ScrollHighlight
-            className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3"
-            colorFrom="#333344"
-            colorTo="#F0F0F5"
-          >
-            Experience
-          </ScrollHighlight>
-          <motion.div
-            className="h-[1px] bg-[#333344]"
-            initial={{ scaleX: 0 }}
-            animate={headerInView ? { scaleX: 1 } : { scaleX: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            style={{ transformOrigin: "left" }}
-          />
-        </div>
-
-        {/* Experience entries */}
-        <div ref={listRef} className="mt-10">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={
-                isInView
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0, y: 20 }
-              }
-              transition={{
-                duration: 0.5,
-                delay: index * 0.08,
-                ease: "easeOut",
-              }}
+      <div className="max-w-[1300px] mx-auto px-6 md:px-12 relative z-10">
+        {/* Two-column: sticky title left, scrolling entries right */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-16">
+          {/* Left — Large sticky title */}
+          <div className="lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center py-20 md:py-28">
+            <p
+              className="font-mono uppercase tracking-[0.12em] text-[#8888A0] mb-4"
+              style={{ fontSize: "10px" }}
             >
-              <button
-                onClick={() => toggleExpand(index)}
-                className="w-full flex justify-between items-start border-b border-[#222233] py-5 text-left group"
-              >
-                <div>
-                  <h3 className="font-sans font-semibold text-base text-[#F0F0F5]">
-                    {exp.title}
-                  </h3>
-                  <p className="font-sans text-sm text-[#8888A0] mt-0.5">
-                    {exp.org}
-                  </p>
-                </div>
-                <div className="flex items-center gap-3 shrink-0 ml-4">
-                  <span className="font-mono text-xs text-[#8888A0]">
-                    {exp.period}
-                  </span>
-                  <motion.div
-                    animate={{ rotate: expandedIndex === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <ChevronDown className="w-4 h-4 text-[#8888A0]" />
-                  </motion.div>
-                </div>
-              </button>
+              Experience
+            </p>
+            <ScrollHighlight
+              className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95] mb-6"
+              colorFrom="#333344"
+              colorTo="#F0F0F5"
+            >
+              Experience
+            </ScrollHighlight>
+            <p className="font-sans text-base text-[#8888A0] max-w-[360px] leading-relaxed">
+              Research, engineering, and teaching across AI,
+              machine learning, and mathematics at Stanford and Google.
+            </p>
+          </div>
 
-              <AnimatePresence initial={false}>
-                {expandedIndex === index && (
-                  <motion.div
-                    initial={{ clipPath: "inset(0 0 100% 0)" }}
-                    animate={{ clipPath: "inset(0 0 0% 0)" }}
-                    exit={{ clipPath: "inset(0 0 100% 0)" }}
-                    transition={{ duration: 0.4, ease: "easeInOut" }}
-                  >
-                    <p className="font-sans text-sm text-[#8888A0] leading-relaxed mt-3 mb-3">
-                      {exp.description}
+          {/* Right — Scrolling experience entries */}
+          <div className="py-20 md:py-28">
+            {experiences.map((exp, index) => (
+              <div key={index}>
+                <button
+                  onClick={() => toggleExpand(index)}
+                  className="w-full flex justify-between items-start border-b border-[#222233] py-5 text-left group"
+                >
+                  <div>
+                    <h3 className="font-sans font-semibold text-base text-[#F0F0F5]">
+                      {exp.title}
+                    </h3>
+                    <p className="font-sans text-sm text-[#8888A0] mt-0.5">
+                      {exp.org}
                     </p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs font-mono px-2.5 py-1 rounded-full border border-[#333344] text-[#8888A0]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                  </div>
+                  <div className="flex items-center gap-3 shrink-0 ml-4">
+                    <span className="font-mono text-xs text-[#8888A0] hidden sm:inline">
+                      {exp.period}
+                    </span>
+                    <motion.div
+                      animate={{ rotate: expandedIndex === index ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <ChevronDown className="w-4 h-4 text-[#8888A0]" />
+                    </motion.div>
+                  </div>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {expandedIndex === index && (
+                    <motion.div
+                      initial={{ clipPath: "inset(0 0 100% 0)" }}
+                      animate={{ clipPath: "inset(0 0 0% 0)" }}
+                      exit={{ clipPath: "inset(0 0 100% 0)" }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                      <p className="font-mono text-xs text-[#555566] mt-3 sm:hidden">
+                        {exp.period}
+                      </p>
+                      <p className="font-sans text-sm text-[#8888A0] leading-relaxed mt-3 mb-3">
+                        {exp.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {exp.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="text-xs font-mono px-2.5 py-1 rounded-full border border-[#333344] text-[#8888A0]"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
