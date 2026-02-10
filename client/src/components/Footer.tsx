@@ -6,8 +6,9 @@ export default function Footer() {
       <div className="max-w-[1200px] mx-auto px-6 md:px-12 lg:px-16">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
           <div>
-            <p className="font-serif text-lg text-[#F0F0F5] mb-1">
-              Anya von Diessl
+            <p className="text-lg text-[#F0F0F5] mb-1">
+              <span className="font-serif font-bold uppercase tracking-tight">Anya</span>{" "}
+              <span className="font-display italic tracking-wide text-[#0066FF]">von Diessl</span>
             </p>
             <p className="font-mono text-xs text-[#8888A0] max-w-[480px]">
               Graduate student at Stanford University pursuing AI research with a focus on medical imaging and precision healthcare.

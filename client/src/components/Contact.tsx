@@ -37,7 +37,7 @@ export default function Contact() {
           CONTACT
         </motion.p>
         <ScrollHighlight
-          className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3"
+          className="font-display italic text-3xl md:text-4xl lg:text-5xl mb-3"
           colorFrom="#C8C8D0"
           colorTo="#0A0A0A"
         >

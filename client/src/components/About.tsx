@@ -58,7 +58,7 @@ export default function About() {
       data-testid="section-about"
     >
       <div className="max-w-[1000px] mx-auto px-6 md:px-12 lg:px-16">
-        <p className="font-serif text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] leading-snug md:leading-snug lg:leading-snug font-normal">
+        <p className="font-display text-3xl md:text-4xl lg:text-5xl xl:text-[3.5rem] leading-snug md:leading-snug lg:leading-snug font-normal italic">
           {words.map((word, i) => (
             <ScrollWord
               key={`${word}-${i}`}

@@ -90,11 +90,11 @@ export default function Navigation() {
                 setIsMenuOpen(false);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className={`font-serif text-xl tracking-tight transition-colors duration-300 ${
+              className={`font-display italic text-2xl tracking-wide transition-colors duration-300 ${
                 isOverHero && !isMenuOpen ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'
               }`}
             >
-              AVD
+              avd
             </a>
           </div>
 
@@ -172,7 +172,7 @@ export default function Navigation() {
                       <a
                         href={item.href}
                         onClick={(e) => handleNavClick(e, item.href)}
-                        className={`block font-serif text-5xl md:text-6xl lg:text-7xl py-2 transition-colors duration-200 ${
+                        className={`block font-display italic text-5xl md:text-6xl lg:text-7xl py-2 transition-colors duration-200 ${
                           isActive
                             ? 'text-[#0066FF]'
                             : 'text-[#0A0A0A] hover:text-[#0066FF]'

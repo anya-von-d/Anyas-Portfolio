@@ -61,17 +61,22 @@ export default function Hero() {
         className="relative z-10 h-full"
       >
         {/* ── Giant name — sits BEHIND the photo ── */}
-        <div className="absolute inset-x-0 top-[8%] md:top-[10%] z-10 text-center px-4">
-          <motion.h1
+        <div className="absolute inset-x-0 top-[6%] md:top-[8%] z-10 text-center px-4">
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-serif text-[8vw] md:text-[7vw] lg:text-[6.5vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight whitespace-nowrap font-extrabold"
+            className="whitespace-nowrap"
           >
-            Anya{" "}
-            <span className="font-light text-[#0066FF]">von</span>{" "}
-            Diessl.
-          </motion.h1>
+            {/* First name — Syne, bold, structured */}
+            <h1 className="font-serif text-[12vw] md:text-[10vw] lg:text-[9vw] leading-[0.8] text-[#F0F0F5] uppercase tracking-tight font-extrabold">
+              Anya
+            </h1>
+            {/* Last name — Cormorant Garamond italic, elegant, French */}
+            <p className="font-display italic text-[7vw] md:text-[5.5vw] lg:text-[5vw] leading-[1] text-[#0066FF] -mt-[0.5vw] tracking-wide">
+              von Diessl
+            </p>
+          </motion.div>
         </div>
 
         {/* ── Skills marquee — behind the photo (z-20) ── */}

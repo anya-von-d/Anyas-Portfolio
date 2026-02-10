@@ -54,7 +54,7 @@ export default function Education() {
               <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
                 Master&apos;s Degree
               </p>
-              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
+              <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
                 Computer
                 <br />
                 Science
@@ -88,7 +88,7 @@ export default function Education() {
               <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
                 Bachelor&apos;s Degree
               </p>
-              <h3 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
+              <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
                 Mathematics
               </h3>
               <p className="font-sans text-sm text-[#888899] mt-3">
