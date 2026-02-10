@@ -1,81 +1,44 @@
+import { useEffect } from 'react';
+import Lenis from 'lenis';
 import Navigation from '@/components/Navigation';
 import Hero from '@/components/Hero';
 import About from '@/components/About';
-import Education from '@/components/Education';
 import Experience from '@/components/Experience';
+import Education from '@/components/Education';
 import Coursework from '@/components/Coursework';
 import Contact from '@/components/Contact';
-import { Button } from '@/components/ui/button';
+import Footer from '@/components/Footer';
 
 export default function Home() {
+  // Smooth scroll with Lenis
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => lenis.destroy();
+  }, []);
+
   return (
     <div className="relative">
       <Navigation />
       <main>
-        <div className="relative bg-[#0A0A0A]">
-          <Hero />
-        </div>
+        <Hero />
         <About />
-        <div className="relative bg-[#0A0A0A]">
-          <Experience />
-        </div>
+        <Experience />
         <Education />
-        <div className="relative bg-gradient-to-b from-[hsl(0,0%,100%)] via-[hsl(90,50%,75%)] via-[hsl(100,45%,80%)] to-[hsl(110,40%,82%)]">
-          <Coursework />
-        </div>
+        <Coursework />
         <Contact />
       </main>
-      <footer className="py-16 px-6 bg-[#1A1A1A] text-white" data-testid="footer-main">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
-            <div className="md:col-span-2">
-              <h3 className="font-display text-2xl font-bold mb-4 text-white">Anya von Diessl</h3>
-              <p className="text-white/70 leading-relaxed mb-6">
-                Graduate student at Stanford University pursuing AI research with a focus on medical imaging and precision healthcare.
-              </p>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-block"
-              >
-                <Button 
-                  variant="default" 
-                  className="bg-primary hover:bg-primary/90"
-                  data-testid="button-linkedin-footer"
-                >
-                  LinkedIn
-                </Button>
-              </a>
-            </div>
-            
-            <div>
-              <h4 className="font-mono text-sm font-bold mb-4 text-primary">Location</h4>
-              <p className="text-white/70">
-                Palo Alto, CA<br />
-                United States
-              </p>
-            </div>
-            
-            <div>
-              <h4 className="font-mono text-sm font-bold mb-4 text-primary">Email</h4>
-              <a 
-                href="mailto:anya2025@stanford.edu" 
-                className="text-white/70 hover:text-primary transition-colors"
-                data-testid="link-email-footer"
-              >
-                anya2025@stanford.edu
-              </a>
-            </div>
-          </div>
-          
-          <div className="pt-8 border-t border-white/10 text-center">
-            <p className="text-white/50 font-mono text-sm">
-              © 2025 Anya von Diessl. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

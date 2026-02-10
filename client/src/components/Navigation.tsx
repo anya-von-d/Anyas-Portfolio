@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { motion, useScroll } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 
 const navItems = [
@@ -11,125 +11,122 @@ const navItems = [
 ];
 
 export default function Navigation() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isOverHero, setIsOverHero] = useState(true);
   const [activeSection, setActiveSection] = useState('');
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-
-      const sections = navItems.map(item => item.href.substring(1));
-      const current = sections.find(section => {
-        const element = document.getElementById(section);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
-        }
-        return false;
-      });
-      if (current) setActiveSection(current);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const heroEl = document.getElementById('hero');
+    if (!heroEl) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsOverHero(entry.isIntersecting),
+      { threshold: 0.1 }
+    );
+    observer.observe(heroEl);
+    return () => observer.disconnect();
   }, []);
 
-  const smoothScrollTo = (targetY: number, duration: number = 1200) => {
-    const startY = window.scrollY;
-    const difference = targetY - startY;
-    const startTime = performance.now();
+  useEffect(() => {
+    const sectionIds = ['about', 'experience', 'education', 'coursework', 'contact'];
+    const observers: IntersectionObserver[] = [];
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const obs = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' }
+      );
+      obs.observe(el);
+      observers.push(obs);
+    });
+    return () => observers.forEach(o => o.disconnect());
+  }, []);
 
-    const easeInOutCubic = (t: number) => {
-      return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-    };
-
-    const animateScroll = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeProgress = easeInOutCubic(progress);
-      window.scrollTo(0, startY + difference * easeProgress);
-      if (progress < 1) {
-        requestAnimationFrame(animateScroll);
-      }
-    };
-
-    requestAnimationFrame(animateScroll);
-  };
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const targetY = element.getBoundingClientRect().top + window.scrollY;
-      smoothScrollTo(targetY);
-      setIsMobileMenuOpen(false);
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileOpen(false);
     }
   };
 
-  return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : ''
-      }`}
-      data-testid="nav-main"
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <button
-            onClick={() => smoothScrollTo(0)}
-            className="font-mono font-bold text-xl hover-elevate active-elevate-2 px-2 py-1 rounded-md"
-            data-testid="link-home"
-          >
-            <span className="text-primary">&lt;AVD/&gt;</span>
-          </button>
+  const textColor = isOverHero ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]';
+  const textMuted = isOverHero ? 'text-[#8888A0]' : 'text-[#555566]';
 
-          <div className="hidden md:flex items-center gap-1">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`px-4 py-2 rounded-md text-sm font-mono transition-colors hover-elevate active-elevate-2 ${
-                  activeSection === item.href.substring(1)
-                    ? 'text-primary'
-                    : 'text-muted-foreground'
-                }`}
-                data-testid={`link-${item.label.toLowerCase()}`}
-              >
-                {item.label}
-              </button>
-            ))}
+  return (
+    <>
+      <nav className={`fixed top-0 left-0 right-0 z-50 h-16 flex items-center transition-all duration-300 ${
+        isOverHero
+          ? 'bg-transparent'
+          : 'bg-[#FAFAFA]/90 backdrop-blur-md border-b border-[#E0E0E8]'
+      }`}>
+        <div className="max-w-[1200px] mx-auto w-full px-6 md:px-12 lg:px-16 flex items-center justify-between">
+          <a
+            href="#hero"
+            onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+            className={`font-medium text-sm tracking-wide transition-colors duration-300 ${textColor}`}
+          >
+            Anya von Diessl
+          </a>
+
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map(item => {
+              const sectionId = item.href.replace('#', '');
+              const isActive = activeSection === sectionId;
+              return (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className={`text-sm transition-colors duration-200 ${
+                    isActive
+                      ? 'text-[#0066FF]'
+                      : `${textMuted} hover:${isOverHero ? 'text-[#F0F0F5]' : 'text-[#0A0A0A]'}`
+                  }`}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            data-testid="button-menu-toggle"
+          <button
+            className={`md:hidden transition-colors ${textColor}`}
+            onClick={() => setIsMobileOpen(!isMobileOpen)}
           >
-            {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </Button>
+            {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
 
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 flex flex-col gap-2 animate-fade-in">
-            {navItems.map((item) => (
-              <button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
-                className={`px-4 py-3 rounded-md text-left font-mono hover-elevate active-elevate-2 ${
-                  activeSection === item.href.substring(1)
-                    ? 'bg-primary/10 text-primary'
-                    : 'text-muted-foreground'
-                }`}
-                data-testid={`link-mobile-${item.label.toLowerCase()}`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
-    </nav>
+        <motion.div
+          className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#0066FF] origin-left"
+          style={{ scaleX: scrollYProgress }}
+        />
+      </nav>
+
+      {isMobileOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-40 bg-[#FAFAFA] flex flex-col items-center justify-center gap-8 pt-16"
+        >
+          {navItems.map(item => (
+            <a
+              key={item.href}
+              href={item.href}
+              onClick={(e) => handleNavClick(e, item.href)}
+              className="text-2xl text-[#0A0A0A] hover:text-[#0066FF] transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
+        </motion.div>
+      )}
+    </>
   );
 }

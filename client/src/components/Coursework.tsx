@@ -1,9 +1,7 @@
-import { useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import NeuralNetworkBackground from './NeuralNetworkBackground';
+import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
-const courses = [
+const coursework = [
   'Advanced Probability Theory',
   'Stochastic Modeling',
   'Optimization',
@@ -18,111 +16,115 @@ const courses = [
 ];
 
 const technicalSkills = [
-  'Python',
-  'NumPy',
-  'pandas',
-  'PyTorch',
-  'scikit-learn',
-  'TensorFlow',
-  'R',
-  'MATLAB',
-  'C++',
-  'SQL',
-  'Git',
-  'Linux',
-  'Bash',
-  'High-Performance Computing',
-  'Numerical Methods',
-  'Parallel Programming',
-  'Monte Carlo Simulation',
-  'Bayesian Inference',
-  'Web Development',
+  { group: 'Languages & Frameworks', items: ['Python', 'NumPy', 'pandas', 'PyTorch', 'scikit-learn', 'TensorFlow'] },
+  { group: 'Scientific Computing', items: ['R', 'MATLAB', 'C++', 'SQL'] },
+  { group: 'Systems & Tools', items: ['Git', 'Linux', 'Bash', 'High-Performance Computing'] },
+  { group: 'Methods', items: ['Numerical Methods', 'Parallel Programming', 'Monte Carlo Simulation', 'Bayesian Inference', 'Web Development'] },
 ];
 
 export default function Coursework() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section id="coursework" className="relative py-16 px-6 bg-[#C4C4C4] overflow-hidden" data-testid="section-coursework">
-      <NeuralNetworkBackground />
-      <div className="relative max-w-5xl mx-auto z-10">
-        <div className="mb-8 text-center">
-          <h2 className="font-mono text-3xl md:text-4xl text-black" data-testid="heading-coursework">
-            <span className="text-[#016742]">&lt;</span>Background<span className="text-[#016742]">/&gt;</span>
-          </h2>
-        </div>
+    <section id="coursework" ref={sectionRef} className="bg-[#F0F0F2] py-20 md:py-28">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-12 lg:px-16">
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="font-mono text-[11px] uppercase tracking-[0.08em] text-[#888899] mb-4"
+        >
+          BACKGROUND
+        </motion.p>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] mb-3"
+        >
+          Foundations & Tools
+        </motion.h2>
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={isInView ? { scaleX: 1 } : {}}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
+          className="h-[1px] bg-[#E0E0E8] origin-left mb-10"
+        />
 
-        <div className="rounded-lg overflow-hidden shadow-2xl">
-          <div className="bg-[#2A2A2A] px-4 py-3 flex md:hidden items-center gap-3 border-b border-black/30">
-            <div className="flex items-center gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500" />
-              <div className="w-3 h-3 rounded-full bg-green-500" />
-            </div>
-            <div className="flex-1" />
-            <div className="w-16" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.3 }}
+              className="font-mono text-[12px] uppercase tracking-[0.06em] text-[#888899] mb-5"
+            >
+              Selected Coursework
+            </motion.p>
+            <ul className="space-y-0">
+              {coursework.map((course, i) => (
+                <motion.li
+                  key={course}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 + i * 0.05 }}
+                  className="text-[15px] text-[#555566] py-2 border-b border-[#E0E0E8] last:border-b-0 hover:text-[#0A0A0A] transition-colors cursor-default"
+                >
+                  {course}
+                </motion.li>
+              ))}
+            </ul>
           </div>
 
-          <div className="bg-[#1A1A1A] p-6 md:p-8">
-            <div className="grid md:grid-cols-2 gap-8">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <h3 className="font-display font-bold text-xl text-white">Relevant Background</h3>
-                </div>
-                <div className="grid sm:grid-cols-2 gap-2">
-                  {courses.map((course, index) => (
-                    <Card
-                      key={course}
-                      className={`p-3 hover-elevate active-elevate-2 cursor-default transition-all animate-fade-in bg-white/5 !border-[#33FF33] ${
-                        hoveredIndex === index ? 'scale-105' : ''
-                      }`}
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      onMouseEnter={() => setHoveredIndex(index)}
-                      onMouseLeave={() => setHoveredIndex(null)}
-                      data-testid={`card-course-${index}`}
-                    >
-                      <p className="font-mono text-xs leading-relaxed text-[#33FF33]">{course}</p>
-                    </Card>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <h3 className="font-display font-bold text-xl text-white">Technical Skills</h3>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {technicalSkills.map((skill, index) => (
-                    <Badge
-                      key={skill}
-                      variant="outline"
-                      className="font-mono px-3 py-1.5 text-xs !border-white text-white hover:!border-[#33FF33] hover:text-[#33FF33] transition-all cursor-default animate-fade-in"
-                      style={{ animationDelay: `${index * 50}ms` }}
-                      data-testid={`badge-tech-${skill.toLowerCase().replace(/\s+/g, '-')}`}
-                    >
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-
-                <Card className="mt-6 p-4 border-primary/30 bg-white/5">
-                  <p className="text-white/70 leading-relaxed text-sm">
-                    Strong foundation in mathematics and computer science with hands-on experience in building
-                    production-quality software systems, conducting cutting-edge AI research, and applying
-                    advanced machine learning techniques to solve real-world problems in healthcare and beyond.
+          <div>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.3 }}
+              className="font-mono text-[12px] uppercase tracking-[0.06em] text-[#888899] mb-5"
+            >
+              Technical
+            </motion.p>
+            <div className="space-y-6">
+              {technicalSkills.map((group, gi) => (
+                <div key={group.group}>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.04em] text-[#888899] mb-3">
+                    {group.group}
                   </p>
-                </Card>
-              </div>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((skill, si) => (
+                      <motion.span
+                        key={skill}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{
+                          duration: 0.5,
+                          delay: 0.5 + gi * 0.1 + si * 0.04,
+                          ease: 'easeOut'
+                        }}
+                        className="text-xs font-mono px-3 py-1.5 rounded-full border border-[#D4D4DD] text-[#555566] bg-white hover:border-[#0066FF] hover:text-[#0066FF] transition-colors cursor-default"
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="hidden md:flex justify-center">
-          <div className="w-24 h-8 bg-gradient-to-b from-[#2A2A2A] to-[#1A1A1A]" />
-        </div>
-        <div className="hidden md:flex justify-center">
-          <div className="w-40 h-3 bg-[#2A2A2A] rounded-b-lg" />
-        </div>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7, delay: 0.8 }}
+          className="text-sm text-[#888899] leading-relaxed max-w-[680px] mt-12"
+        >
+          Strong foundation in mathematics and computer science with hands-on experience in
+          building production-quality software systems, conducting cutting-edge AI research, and
+          applying advanced machine learning techniques to solve real-world problems in healthcare and beyond.
+        </motion.p>
       </div>
     </section>
   );
