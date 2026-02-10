@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ScrollHighlight from "@/components/ScrollHighlight";
 
 const coursework = [
   "Advanced Probability Theory",
@@ -40,11 +41,15 @@ export default function Coursework() {
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-4">
               Background
             </p>
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-[#0A0A0A] leading-[0.95]">
+            <ScrollHighlight
+              className="font-serif text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-[0.95]"
+              colorFrom="#C8C8D0"
+              colorTo="#0A0A0A"
+            >
               Foundations
               <br />
               &amp;&nbsp;Tools
-            </h2>
+            </ScrollHighlight>
             <p className="font-sans text-base text-[#888899] mt-6 max-w-[360px] leading-relaxed">
               Strong foundation in mathematics and computer science with
               hands-on experience building production-quality AI systems.

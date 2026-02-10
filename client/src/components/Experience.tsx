@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import CodeWaterfall from "@/components/CodeWaterfall";
+import ScrollHighlight from "@/components/ScrollHighlight";
 
 const experiences = [
   {
@@ -111,9 +112,13 @@ export default function Experience() {
           >
             EXPERIENCE
           </p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#F0F0F5] mb-3">
+          <ScrollHighlight
+            className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3"
+            colorFrom="#333344"
+            colorTo="#F0F0F5"
+          >
             Experience
-          </h2>
+          </ScrollHighlight>
           <motion.div
             className="h-[1px] bg-[#333344]"
             initial={{ scaleX: 0 }}

@@ -3,6 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { Mail, Send } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import CursorGlow from '@/components/CursorGlow';
+import ScrollHighlight from '@/components/ScrollHighlight';
 
 export default function Contact() {
   const sectionRef = useRef(null);
@@ -35,14 +36,13 @@ export default function Contact() {
         >
           CONTACT
         </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] mb-3"
+        <ScrollHighlight
+          className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3"
+          colorFrom="#C8C8D0"
+          colorTo="#0A0A0A"
         >
           Get in touch
-        </motion.h2>
+        </ScrollHighlight>
         <motion.div
           initial={{ scaleX: 0 }}
           animate={isInView ? { scaleX: 1 } : {}}

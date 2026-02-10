@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import ScrollHighlight from "@/components/ScrollHighlight";
 
 // Row 1 scrolls left on scroll, Row 2 scrolls right
 const row1 = [
@@ -70,11 +71,15 @@ export default function TechnicalSkills() {
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
               Technical
             </p>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#0A0A0A] leading-[0.95]">
+            <ScrollHighlight
+              className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-[0.95]"
+              colorFrom="#C8C8D0"
+              colorTo="#0A0A0A"
+            >
               Technical
               <br />
-              <span className="text-[#C8C8D0]">&amp;&nbsp;Skills</span>
-            </h2>
+              &amp;&nbsp;Skills
+            </ScrollHighlight>
           </div>
 
           {/* Paragraph — left */}
