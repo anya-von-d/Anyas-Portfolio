@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 
 const paragraph =
   "Graduate student at Stanford pursuing a Master's in Computer Science on the AI Track. With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing. My work bridges statistical theory and clinical practice — building systems that are both rigorous and real.";
@@ -10,46 +10,44 @@ function ScrollWord({
   word,
   index,
   totalWords,
-  scrollYProgress,
+  progress,
 }: {
   word: string;
   index: number;
   totalWords: number;
-  scrollYProgress: any;
+  progress: number;
 }) {
-  // Each word activates at a different point in the scroll
-  // Spread words across 0.0 → 0.85 of scroll progress so they all reveal before end
   const wordStart = (index / totalWords) * 0.85;
   const wordEnd = wordStart + 0.04;
 
-  const opacity = useTransform(
-    scrollYProgress,
-    [wordStart, wordEnd],
-    [0.2, 1]
-  );
+  // Clamp: once revealed, stay revealed
+  const t = Math.min(1, Math.max(0, (progress - wordStart) / (wordEnd - wordStart)));
 
-  const color = useTransform(
-    scrollYProgress,
-    [wordStart, wordEnd],
-    ["#C8C8D0", "#0A0A0A"]
-  );
+  const opacity = 0.2 + t * 0.8;
+  const color = t >= 1 ? "#0A0A0A" : `rgb(${200 - t * 190}, ${200 - t * 190}, ${208 - t * 198})`;
 
   return (
-    <motion.span
+    <span
       style={{ opacity, color }}
-      className="inline-block mr-[0.3em] transition-none"
+      className="inline-block mr-[0.3em]"
     >
       {word}
-    </motion.span>
+    </span>
   );
 }
 
 export default function About() {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [maxProgress, setMaxProgress] = useState(0);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start 0.8", "end 0.4"],
+  });
+
+  // Track the highest scroll progress reached — words never un-reveal
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setMaxProgress((prev) => Math.max(prev, latest));
   });
 
   return (
@@ -67,7 +65,7 @@ export default function About() {
               word={word}
               index={i}
               totalWords={words.length}
-              scrollYProgress={scrollYProgress}
+              progress={maxProgress}
             />
           ))}
         </p>
