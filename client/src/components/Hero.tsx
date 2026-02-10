@@ -66,10 +66,10 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="font-serif text-[8vw] md:text-[7vw] lg:text-[6.5vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight whitespace-nowrap"
+            className="font-serif text-[8vw] md:text-[7vw] lg:text-[6.5vw] leading-[0.85] text-[#F0F0F5] uppercase tracking-tight whitespace-nowrap font-extrabold"
           >
             Anya{" "}
-            <span className="italic text-[#0066FF]">von</span>{" "}
+            <span className="font-light text-[#0066FF]">von</span>{" "}
             Diessl.
           </motion.h1>
         </div>

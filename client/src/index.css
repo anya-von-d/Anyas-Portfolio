@@ -50,9 +50,9 @@
   --radius: 0.5rem;
 
   /* Fonts */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-serif: 'Instrument Serif', Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: 'Outfit', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Syne', 'Inter', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Fira Code', monospace;
 }
 
 @layer base {

@@ -457,7 +457,7 @@ export default function TechnicalSkills() {
         // Label
         ctx.font = `${isHovered ? "600" : "500"} ${
           isHovered ? 12 : 10
-        }px 'JetBrains Mono', 'Fira Code', monospace`;
+        }px 'IBM Plex Mono', 'Fira Code', monospace`;
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
         ctx.fillStyle = isDimmed
@@ -471,7 +471,7 @@ export default function TechnicalSkills() {
 
         // Category label on hover
         if (isHovered) {
-          ctx.font = "500 9px 'JetBrains Mono', monospace";
+          ctx.font = "500 9px 'IBM Plex Mono', monospace";
           ctx.fillStyle = color;
           ctx.fillText(
             CATEGORY_LABELS[node.category].toUpperCase(),
