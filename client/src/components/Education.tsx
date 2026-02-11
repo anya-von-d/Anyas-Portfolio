@@ -11,24 +11,31 @@ export default function Education() {
     offset: ["start end", "end start"],
   });
 
-  // Parallax — text drifts inward, logos float
-  const leftX = useTransform(scrollYProgress, [0, 0.5, 1], [-100, 0, 50]);
-  const rightX = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -50]);
-  const logoY = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -40]);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
+  // Dramatic parallax — elements sweep in from far off-screen like Lando Norris site
+  const leftX = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [-500, -80, 0, 0, 200]);
+  const rightX = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [500, 80, 0, 0, -200]);
+  const leftRotate = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [-8, -2, 0, 0, 4]);
+  const rightRotate = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [8, 2, 0, 0, -4]);
+  const leftScale = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.7, 0.9, 1, 1, 0.85]);
+  const rightScale = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.7, 0.9, 1, 1, 0.85]);
+  const logoY = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [200, 40, 0, 0, -120]);
+  const logoScale = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [0.5, 0.85, 1, 1, 0.8]);
+  const logoRotate = useTransform(scrollYProgress, [0, 0.35, 0.5, 0.65, 1], [6, 1, 0, 0, -3]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.3, 0.45, 0.55, 0.7, 1], [0, 0, 1, 1, 0, 0]);
+  const dividerHeight = useTransform(scrollYProgress, [0.3, 0.5, 0.55], [0, 1, 1]);
 
   return (
     <section
       id="education"
       ref={sectionRef}
-      className="bg-[var(--bg)] py-28 md:py-36 lg:py-44 overflow-hidden"
+      className="bg-[var(--bg)] py-40 md:py-56 lg:py-72 overflow-hidden"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
         {/* Desktop: text on outside, logos in center */}
-        <div className="hidden md:flex items-center justify-center gap-6 lg:gap-10 min-h-[400px] md:min-h-[500px]">
+        <div className="hidden md:flex items-center justify-center gap-6 lg:gap-10 min-h-[500px] md:min-h-[600px]">
           {/* Left — MS Degree text */}
           <motion.div
-            style={{ x: leftX, opacity: contentOpacity }}
+            style={{ x: leftX, opacity: contentOpacity, rotate: leftRotate, scale: leftScale }}
             className="flex-1 text-right pr-4 lg:pr-8"
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
@@ -56,7 +63,7 @@ export default function Education() {
 
           {/* Center — Logos side by side */}
           <motion.div
-            style={{ y: logoY, opacity: contentOpacity }}
+            style={{ y: logoY, opacity: contentOpacity, scale: logoScale, rotate: logoRotate }}
             className="shrink-0 flex items-center gap-4 lg:gap-8"
           >
             <img
@@ -64,7 +71,10 @@ export default function Education() {
               alt="Stanford Engineering"
               className="w-32 h-32 lg:w-44 lg:h-44 xl:w-52 xl:h-52 object-contain"
             />
-            <div className="w-[1px] h-20 lg:h-28 bg-[#E0E0E8]" />
+            <motion.div
+              style={{ scaleY: dividerHeight }}
+              className="w-[1px] h-20 lg:h-28 bg-[#E0E0E8] origin-top"
+            />
             <img
               src={bsLogo}
               alt="Stanford University"
@@ -74,7 +84,7 @@ export default function Education() {
 
           {/* Right — BS Degree text */}
           <motion.div
-            style={{ x: rightX, opacity: contentOpacity }}
+            style={{ x: rightX, opacity: contentOpacity, rotate: rightRotate, scale: rightScale }}
             className="flex-1 text-left pl-4 lg:pl-8"
           >
             <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
