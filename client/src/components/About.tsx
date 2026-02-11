@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 
 const paragraph =
-  "Graduate student at Stanford pursuing a Master's in Computer Science on the AI Track. With experience at Google and Stanford research labs, I develop AI-driven solutions for medical imaging, precision healthcare, and general game playing. My work bridges statistical theory and clinical practice — building systems that are both rigorous and real.";
+  "I'm a Stanford CS master's student working on mathematically grounded machine learning and computational decision systems. I build models and production infrastructure that operationalize statistical, probabilistic, and optimization theory into reliable software that runs in real-world environments, particularly for problems involving uncertainty, data, and decision-making.";
 
 const words = paragraph.split(" ");
 
