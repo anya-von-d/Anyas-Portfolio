@@ -11,10 +11,10 @@ export default function Education() {
     offset: ["start end", "end start"],
   });
 
-  // Parallax — logos drift inward, text stays centered
-  const leftX = useTransform(scrollYProgress, [0, 0.5, 1], [120, 0, -60]);
-  const rightX = useTransform(scrollYProgress, [0, 0.5, 1], [-120, 0, 60]);
-  const centerY = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -40]);
+  // Parallax — text drifts inward, logos float
+  const leftX = useTransform(scrollYProgress, [0, 0.5, 1], [-100, 0, 50]);
+  const rightX = useTransform(scrollYProgress, [0, 0.5, 1], [100, 0, -50]);
+  const logoY = useTransform(scrollYProgress, [0, 0.5, 1], [60, 0, -40]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 1, 1, 0]);
 
   return (
@@ -24,94 +24,132 @@ export default function Education() {
       className="bg-[var(--bg)] py-28 md:py-36 lg:py-44 overflow-hidden"
     >
       <div className="max-w-[1200px] mx-auto px-6 md:px-12">
-        {/* Main composition — logos on sides, text in center */}
-        <div className="flex items-center justify-center gap-6 md:gap-10 lg:gap-16 min-h-[400px] md:min-h-[500px]">
-          {/* Left — MS Logo (Engineering) */}
+        {/* Desktop: text on outside, logos in center */}
+        <div className="hidden md:flex items-center justify-center gap-6 lg:gap-10 min-h-[400px] md:min-h-[500px]">
+          {/* Left — MS Degree text */}
           <motion.div
             style={{ x: leftX, opacity: contentOpacity }}
-            className="hidden md:block shrink-0"
+            className="flex-1 text-right pr-4 lg:pr-8"
+          >
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
+              Master&apos;s Degree
+            </p>
+            <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
+              Computer
+              <br />
+              Science
+            </h3>
+            <p className="font-sans text-base md:text-lg text-[#555566] mt-3">
+              Artificial Intelligence Track
+            </p>
+            <p className="font-sans text-sm text-[#888899] mt-1">
+              Stanford University
+            </p>
+            <p className="font-mono text-xs text-[#888899] mt-2">
+              Expected 2026
+            </p>
+            <div className="inline-flex items-center gap-1.5 bg-[#0066FF10] text-[#0066FF] text-xs font-mono px-2.5 py-1 rounded-full mt-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-pulse" />
+              In Progress
+            </div>
+          </motion.div>
+
+          {/* Center — Logos side by side */}
+          <motion.div
+            style={{ y: logoY, opacity: contentOpacity }}
+            className="shrink-0 flex items-center gap-4 lg:gap-8"
           >
             <img
               src={msLogo}
               alt="Stanford Engineering"
-              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain"
+              className="w-32 h-32 lg:w-44 lg:h-44 xl:w-52 xl:h-52 object-contain"
             />
-          </motion.div>
-
-          {/* Center — Education text */}
-          <motion.div
-            style={{ y: centerY, opacity: contentOpacity }}
-            className="flex flex-col items-center text-center max-w-lg"
-          >
-            {/* MS degree */}
-            <div className="mb-10 md:mb-14">
-              {/* Mobile-only logo */}
-              <img
-                src={msLogo}
-                alt="Stanford Engineering"
-                className="md:hidden w-16 h-16 object-contain mx-auto mb-4"
-              />
-              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
-                Master&apos;s Degree
-              </p>
-              <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
-                Computer
-                <br />
-                Science
-              </h3>
-              <p className="font-sans text-base md:text-lg text-[#555566] mt-3">
-                Artificial Intelligence Track
-              </p>
-              <p className="font-sans text-sm text-[#888899] mt-1">
-                Stanford University
-              </p>
-              <p className="font-mono text-xs text-[#888899] mt-2">
-                Expected 2026
-              </p>
-              <div className="inline-flex items-center gap-1.5 bg-[#0066FF10] text-[#0066FF] text-xs font-mono px-2.5 py-1 rounded-full mt-3">
-                <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-pulse" />
-                In Progress
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div className="w-12 h-[1px] bg-[#E0E0E8] mb-10 md:mb-14" />
-
-            {/* BS degree */}
-            <div>
-              {/* Mobile-only logo */}
-              <img
-                src={bsLogo}
-                alt="Stanford University"
-                className="md:hidden w-16 h-16 object-contain mx-auto mb-4"
-              />
-              <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
-                Bachelor&apos;s Degree
-              </p>
-              <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
-                Mathematics
-              </h3>
-              <p className="font-sans text-sm text-[#888899] mt-3">
-                Stanford University
-              </p>
-              <p className="font-mono text-xs text-[#888899] mt-2">
-                2021 – 2025
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Right — BS Logo (Stanford) */}
-          <motion.div
-            style={{ x: rightX, opacity: contentOpacity }}
-            className="hidden md:block shrink-0"
-          >
+            <div className="w-[1px] h-20 lg:h-28 bg-[#E0E0E8]" />
             <img
               src={bsLogo}
               alt="Stanford University"
-              className="w-40 h-40 lg:w-56 lg:h-56 xl:w-64 xl:h-64 object-contain"
+              className="w-32 h-32 lg:w-44 lg:h-44 xl:w-52 xl:h-52 object-contain"
             />
           </motion.div>
+
+          {/* Right — BS Degree text */}
+          <motion.div
+            style={{ x: rightX, opacity: contentOpacity }}
+            className="flex-1 text-left pl-4 lg:pl-8"
+          >
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
+              Bachelor&apos;s Degree
+            </p>
+            <h3 className="font-display italic text-3xl md:text-4xl lg:text-5xl text-[#0A0A0A] leading-tight">
+              Mathematics
+            </h3>
+            <p className="font-sans text-sm text-[#888899] mt-3">
+              Stanford University
+            </p>
+            <p className="font-mono text-xs text-[#888899] mt-2">
+              2021 – 2025
+            </p>
+          </motion.div>
         </div>
+
+        {/* Mobile: stacked layout */}
+        <motion.div
+          style={{ opacity: contentOpacity }}
+          className="md:hidden flex flex-col items-center text-center gap-10"
+        >
+          {/* MS degree */}
+          <div>
+            <img
+              src={msLogo}
+              alt="Stanford Engineering"
+              className="w-16 h-16 object-contain mx-auto mb-4"
+            />
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
+              Master&apos;s Degree
+            </p>
+            <h3 className="font-display italic text-3xl text-[#0A0A0A] leading-tight">
+              Computer
+              <br />
+              Science
+            </h3>
+            <p className="font-sans text-base text-[#555566] mt-3">
+              Artificial Intelligence Track
+            </p>
+            <p className="font-sans text-sm text-[#888899] mt-1">
+              Stanford University
+            </p>
+            <p className="font-mono text-xs text-[#888899] mt-2">
+              Expected 2026
+            </p>
+            <div className="inline-flex items-center gap-1.5 bg-[#0066FF10] text-[#0066FF] text-xs font-mono px-2.5 py-1 rounded-full mt-3">
+              <div className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-pulse" />
+              In Progress
+            </div>
+          </div>
+
+          <div className="w-12 h-[1px] bg-[#E0E0E8]" />
+
+          {/* BS degree */}
+          <div>
+            <img
+              src={bsLogo}
+              alt="Stanford University"
+              className="w-16 h-16 object-contain mx-auto mb-4"
+            />
+            <p className="font-mono text-[10px] uppercase tracking-[0.12em] text-[#888899] mb-3">
+              Bachelor&apos;s Degree
+            </p>
+            <h3 className="font-display italic text-3xl text-[#0A0A0A] leading-tight">
+              Mathematics
+            </h3>
+            <p className="font-sans text-sm text-[#888899] mt-3">
+              Stanford University
+            </p>
+            <p className="font-mono text-xs text-[#888899] mt-2">
+              2021 – 2025
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
