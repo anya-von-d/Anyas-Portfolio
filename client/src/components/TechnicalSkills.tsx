@@ -58,7 +58,6 @@ const SKILLS_DATA: { id: string; label: string; category: SkillNode["category"] 
   { id: "scipy", label: "SciPy", category: "framework" },
   { id: "matplotlib", label: "Matplotlib", category: "framework" },
   { id: "jax", label: "JAX", category: "framework" },
-  { id: "huggingface", label: "Hugging Face", category: "framework" },
   { id: "opencv", label: "OpenCV", category: "framework" },
 
   // Domains
@@ -122,8 +121,6 @@ const EDGES_DATA: SkillEdge[] = [
   { source: "scipy", target: "optimization" },
   { source: "scipy", target: "numerical" },
   { source: "opencv", target: "cv" },
-  { source: "huggingface", target: "nlp" },
-  { source: "huggingface", target: "genai" },
 
   // Domain connections
   { source: "bayesian", target: "causal" },
@@ -569,16 +566,16 @@ export default function TechnicalSkills() {
               colorFrom="#333344"
               colorTo="#F0F0F5"
             >
-              Technical
+              Technical Skills
               <br />
-              &amp;&nbsp;Skills
+              &amp;&nbsp;Background
             </ScrollHighlight>
           </div>
 
           {/* Paragraph — left */}
           <p className="font-sans text-base md:text-lg text-[#8888A0] max-w-[440px] leading-relaxed md:order-1">
             Proficient across the full stack of modern AI research and
-            engineering — from low-level systems programming to high-level
+            engineering, from low-level systems programming to high-level
             deep learning frameworks and statistical modeling.
           </p>
         </div>

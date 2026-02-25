@@ -173,14 +173,6 @@ export default function Hero() {
             >
               LinkedIn <ArrowUpRight size={13} />
             </a>
-            <a
-              href="https://github.com/anyavondiessl"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-sans text-sm lg:text-base text-[#8888A0] hover:text-[#0066FF] transition-colors flex items-center gap-1"
-            >
-              GitHub <ArrowUpRight size={13} />
-            </a>
             <div className="mt-6">
               <button
                 onClick={scrollToContact}
